@@ -17,11 +17,11 @@ dependencies: start
 
 serve: start
 	docker-compose -p ionic-app -f docker-compose.yml exec \
-		--user ionic ionic-app bash -c "yarn start | cat"
+		--user ionic ionic-app bash -c "yarn serve | cat"
 
 serve-local-api: start
 	docker-compose -p ionic-app -f docker-compose.yml exec \
-		--user ionic ionic-app bash -c "yarn start-local-api | cat"
+		--user ionic ionic-app bash -c "yarn serve-local-api | cat"
 
 launch-windows-app:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \

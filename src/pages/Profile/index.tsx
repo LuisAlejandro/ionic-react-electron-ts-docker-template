@@ -28,7 +28,6 @@ import { EProps } from 'src/shared/common/types';
 import Page from 'src/components/Page/Loadable';
 import { userDataInitialValues } from 'src/shared/common/values';
 import AvatarImg from 'src/assets/images/png/avatar.png';
-import RequestsTable from 'src/components/RequestsTable/Loadable';
 
 import {
   makeSelectorAlertMessage,
@@ -95,19 +94,6 @@ const Profile: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedPr
           </IonCol>
           <IonCol size="16" size-sm="18" size-md="20" size-xl="21"
                   className={style['content-panel']} class="ion-no-padding">
-            <IonRow>
-              <IonCol size="24">
-                <IonCard>
-                  <IonCardHeader>
-                    <IonCardTitle color="primary">Solicitudes</IonCardTitle>
-                    <IonCardSubtitle color="gray30">Solicitudes realizadas por este usuario</IonCardSubtitle>
-                  </IonCardHeader>
-                  <IonCardContent class="ion-padding">
-                    <RequestsTable mode="minimal" data={userDetails.requests} />
-                  </IonCardContent>
-                </IonCard>
-              </IonCol>
-            </IonRow>
             <IonRow>
               <IonCol size="24">
                 <IonCard>

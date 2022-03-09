@@ -33,67 +33,32 @@ import {
   UnpackNestedValue,
 } from 'react-hook-form';
 import lodashMerge from 'lodash/merge';
-import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import {
   adminOrganizationSchema,
-  adminMaterialSchema,
-  adminTerminationSchema,
-  adminDeviceSchema,
-  adminDoctorSchema,
-  adminDeliveryAddressSchema,
-  adminPickupAddressSchema,
-  adminPatientSchema,
   adminCreateUserSchema,
   adminUpdateUserSchema,
   adminOrganizationInitialValues,
-  adminMaterialInitialValues,
-  adminTerminationInitialValues,
-  adminDeviceInitialValues,
-  adminDoctorInitialValues,
-  adminPickupAddressInitialValues,
-  adminDeliveryAddressInitialValues,
-  adminPatientInitialValues,
   adminCreateUserInitialValues,
   adminUpdateUserInitialValues,
 } from 'src/pages/Admin/schemas';
 import {
   AdminCreateUserType,
-  AdminDeliveryAddressType,
-  AdminDeviceType,
-  AdminDoctorType,
   AdminEntityType,
-  AdminMaterialType,
   AdminOrganizationType,
-  AdminPatientType,
-  AdminPickupAddressType,
   AdminRoleType,
-  AdminTerminationType,
   AdminUpdateUserType,
 } from 'src/pages/Admin/types';
 import { flattenObject } from 'src/shared/common/helpers';
-import { createRequestMuiTheme } from 'src/shared/common/themes';
+import { adminModalTheme } from 'src/shared/common/themes';
 import { userDataInitialValues } from 'src/shared/common/values';
 
-import { PickupAddressesAdminModalContent } from './entities/pickupaddresses';
 import { OrganizationsAdminModalContent } from './entities/organizations';
-import { MaterialsAdminModalContent } from './entities/materials';
-import { TerminationsAdminModalContent } from './entities/terminations';
-import { DevicesAdminModalContent } from './entities/devices';
-import { DoctorsAdminModalContent } from './entities/doctors';
-import { PatientsAdminModalContent } from './entities/patients';
 import { UsersAdminModalContent } from './entities/users';
 
 import style from './style.module.scss';
-
-
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
-
 
 
 type SubState = {
@@ -268,44 +233,42 @@ const AdminModal = (props: SubState) => {
             <IonCol size="24">
               <IonCard class="ion-no-padding ion-no-margin">
                 <IonCardContent className="ion-padding">
+                    <ThemeProvider theme={adminModalTheme}>
                   <form>
-                    <StyledEngineProvider injectFirst>
-                      <ThemeProvider theme={createRequestMuiTheme}>
-                        <ModalContent control={control} isCreate={isCreate} setAlertMessage={setAlertMessage}
-                                      organizationsList={organizationsList} rolesList={rolesList} isDelivery={isDelivery}>
-                          <IonCol size="12">
-                            <IonButtons class="ion-justify-content-start">
-                              <IonButton class="ion-text-capitalize" fill="solid"
-                                         expand="block" color="igray50"
-                                         onClick={() => {
-                                           reset();
-                                           setIsOpen(false);
-                                         }}>
-                                <IonIcon slot="start" icon={closeSharp} />
-                                <IonLabel>Cancelar</IonLabel>
-                              </IonButton>
-                              <IonButton class="ion-text-capitalize" fill="solid"
-                                         expand="block" color="igray30"
-                                         onClick={() => {
-                                           reset();
-                                         }}>
-                                <IonLabel>Limpiar</IonLabel>
-                              </IonButton>
-                            </IonButtons>
-                          </IonCol>
-                          <IonCol size="12">
-                            <IonButtons class="ion-justify-content-end">
-                              <IonButton class="ion-text-capitalize" fill="solid"
-                                         expand="block" color="iprimary" onClick={handleFormSubmit}>
-                                <IonLabel>{isCreate ? ('Añadir') : ('Guardar')}</IonLabel>
-                                <IonIcon slot="start" icon={isCreate ? checkmarkSharp : saveSharp} />
-                              </IonButton>
-                            </IonButtons>
-                          </IonCol>
-                        </ModalContent>
-                      </ThemeProvider>
-                    </StyledEngineProvider>
+                      <ModalContent control={control} isCreate={isCreate} setAlertMessage={setAlertMessage}
+                                    organizationsList={organizationsList} rolesList={rolesList} isDelivery={isDelivery}>
+                        <IonCol size="12">
+                          <IonButtons class="ion-justify-content-start">
+                            <IonButton class="ion-text-capitalize" fill="solid"
+                                        expand="block" color="igray50"
+                                        onClick={() => {
+                                          reset();
+                                          setIsOpen(false);
+                                        }}>
+                              <IonIcon slot="start" icon={closeSharp} />
+                              <IonLabel>Cancelar</IonLabel>
+                            </IonButton>
+                            <IonButton class="ion-text-capitalize" fill="solid"
+                                        expand="block" color="igray30"
+                                        onClick={() => {
+                                          reset();
+                                        }}>
+                              <IonLabel>Limpiar</IonLabel>
+                            </IonButton>
+                          </IonButtons>
+                        </IonCol>
+                        <IonCol size="12">
+                          <IonButtons class="ion-justify-content-end">
+                            <IonButton class="ion-text-capitalize" fill="solid"
+                                        expand="block" color="iprimary" onClick={handleFormSubmit}>
+                              <IonLabel>{isCreate ? ('Añadir') : ('Guardar')}</IonLabel>
+                              <IonIcon slot="start" icon={isCreate ? checkmarkSharp : saveSharp} />
+                            </IonButton>
+                          </IonButtons>
+                        </IonCol>
+                      </ModalContent>
                   </form>
+                    </ThemeProvider>
                 </IonCardContent>
               </IonCard>
             </IonCol>

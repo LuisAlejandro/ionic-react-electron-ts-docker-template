@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 
+import { UserDataType } from 'src/shared/common/types';
+
 import {
   emailSchema,
   idNumberSchema,
@@ -14,21 +16,7 @@ import {
 } from './misc';
 
 
-type UserData = {
-  id: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  token: string,
-  avatar: string,
-  orgLogo: string,
-  orgName: string,
-  orgId: string,
-  role: string,
-  permissions: string[],
-};
-
-const user = JSON.parse(localStorage.getItem('user') as string) as UserData;
+const user = JSON.parse(localStorage.getItem('user') as string) as UserDataType;
 
 const userDetailsSchema = yup
   .object({

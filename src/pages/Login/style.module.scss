@@ -1,6 +1,5 @@
 .login-page {
-  background: url('../../assets/images/png/bg_login.png') no-repeat center;
-  background-size: cover;
+  background: var(--ion-color-gray10);
   .login-content {
     --background: transparent;
     .login-grid {

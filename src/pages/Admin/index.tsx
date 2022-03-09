@@ -38,22 +38,10 @@ import {
   SubState,
   AdminEntityType,
   AdminOrganizationType,
-  AdminMaterialType,
-  AdminTerminationType,
-  AdminDeviceType,
-  AdminDoctorType,
-  AdminPickupAddressType,
-  AdminPatientType,
   AdminCreateUserType
 } from './types';
 import {
   adminOrganizationInitialValues,
-  adminMaterialInitialValues,
-  adminTerminationInitialValues,
-  adminDeviceInitialValues,
-  adminDoctorInitialValues,
-  adminPickupAddressInitialValues,
-  adminPatientInitialValues,
   adminCreateUserInitialValues,
 } from './schemas';
 import style from './style.module.scss';

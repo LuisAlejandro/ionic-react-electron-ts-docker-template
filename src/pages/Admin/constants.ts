@@ -29,33 +29,11 @@ export const Actions = {
 
 /** Component Constants - START */
 export const Constants = {
-  ApiHost: process.env.REACT_APP_API_URL || 'http://api-app.soleitapp.com',
+  ApiHost: process.env.REACT_APP_API_URL,
   OrganizationsModelExcludes: [
-    'users', 'patients', 'requests', 'doctors',
-    'devices', 'materials', 'terminations', 'pickupAddresses',
-  ] as const,
-  MaterialsModelExcludes: [
-    'products',
-  ] as const,
-  TerminationsModelExcludes: [
-    'products',
-  ] as const,
-  DevicesModelExcludes: [] as const,
-  DoctorsModelExcludes: [
-    'requests',
-  ] as const,
-  PickupAddressesModelExcludes: [
-    'requests',
-  ] as const,
-  DeliveryAddressesModelExcludes: [
-    'requests', 'patient'
-  ] as const,
-  PatientsModelExcludes: [
-    'requests', 'deliveryAddresses', 'alignments',
-    'scanners', 'products', 'insoles'
+    'users',
   ] as const,
   UsersModelExcludes: [
-    'requests',
   ] as const,
   RolesModelExcludes: [
     'users', 'permissions',

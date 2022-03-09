@@ -7,6 +7,8 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 import { IpcRenderer } from 'electron';
 import WebFont from 'webfontloader';
+import { CacheProvider } from "@emotion/react";
+import createCache from '@emotion/cache';
 
 import Home from './pages/Home/Loadable';
 import Login from './pages/Login/Loadable';
@@ -38,6 +40,11 @@ import 'overlayscrollbars/css/OverlayScrollbars.css';
 
 
 const SoleitApp: React.FC = () => {
+  
+  const muiCache = createCache({
+    'key': 'mui',
+    'prepend': true,
+  });
 
   useEffect(() => {
     if (!Boolean(process.env.REACT_APP_API_URL)) {
@@ -58,15 +65,17 @@ const SoleitApp: React.FC = () => {
 
   return (
     <IonApp>
-      <IonReactRouter history={history}>
-        <IonRouterOutlet>
-          <PrivateRoute path="/users/profile/:id?" component={Profile} />
-          <PrivateRoute exact path="/admin/:type" component={Admin} />
-          <PrivateRoute exact path="/home" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/" render={() => (<Redirect to="/home" />)} />
-        </IonRouterOutlet>
-      </IonReactRouter>
+      <CacheProvider value={muiCache}>
+        <IonReactRouter history={history}>
+          <IonRouterOutlet>
+            <PrivateRoute path="/users/profile/:id?" component={Profile} />
+            <PrivateRoute exact path="/admin/:type" component={Admin} />
+            <PrivateRoute exact path="/home" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" render={() => (<Redirect to="/home" />)} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </CacheProvider>
     </IonApp>
   );
 };

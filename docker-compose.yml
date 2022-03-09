@@ -19,5 +19,3 @@ services:
       - PORT=8100
       - PUBLIC_URL=http://localhost:8100
       - API_LOCAL_URL=http://localhost:2017
-      - API_REMOTE_URL=http://api-app.soleitapp.com
-      - TRANSLATOR_BASE_URL=http://localhost:5000

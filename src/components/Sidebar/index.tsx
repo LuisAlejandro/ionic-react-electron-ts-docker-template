@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   IonIcon,
   IonButton,
@@ -59,40 +58,14 @@ const Sidebar = (props: SubState) => {
       ]
     },
     {
-      key: 'requests',
-      label: 'Solicitudes',
-      icon: readerSharp,
-      permissions: [
-        'view requests'
-      ]
-    },
-    {
-      key: 'admin/patients',
-      label: 'Pacientes',
-      icon: personSharp,
-      permissions: [
-        'view patients'
-      ]
-    },
-    {
-      key: 'admin/users',
-      label: 'Usuarios',
-      icon: peopleSharp,
-      permissions: [
-        'view users'
-      ]
-    },
-    {
       key: 'admin',
       label: 'Administrador',
       icon: personCircleOutline,
       permissions: [
         'view organizations',
-        'view materials',
-        'view terminations',
-        'view devices',
-        'view doctors',
-        'view pickupaddresses'
+        'view users',
+        'view roles',
+        'view permissions',
       ]
     },
   ];
@@ -107,43 +80,27 @@ const Sidebar = (props: SubState) => {
       ]
     },
     {
-      key: 'admin/materials',
-      label: 'Materiales',
-      icon: personCircleOutline,
+      key: 'admin/users',
+      label: 'Usuarios',
+      icon: peopleSharp,
       permissions: [
-        'view materials'
+        'view users'
       ]
     },
     {
-      key: 'admin/terminations',
-      label: 'Terminaciones',
+      key: 'admin/roles',
+      label: 'Roles',
       icon: personCircleOutline,
       permissions: [
-        'view terminations'
+        'view roles'
       ]
     },
     {
-      key: 'admin/devices',
-      label: 'Equipos',
+      key: 'admin/permissions',
+      label: 'Permisos',
       icon: personCircleOutline,
       permissions: [
-        'view devices'
-      ]
-    },
-    {
-      key: 'admin/doctors',
-      label: 'Doctores',
-      icon: personCircleOutline,
-      permissions: [
-        'view doctors'
-      ]
-    },
-    {
-      key: 'admin/pickupaddresses',
-      label: 'Direcciones de retiro',
-      icon: personCircleOutline,
-      permissions: [
-        'view pickupaddresses'
+        'view permissions'
       ]
     },
   ];
@@ -160,22 +117,6 @@ const Sidebar = (props: SubState) => {
       <IonCol size="8" size-sm="6" size-md="4" size-xl={isExpanded ? '2' : '1'}
               className={style['left-panel']} class="ion-no-padding">
         <IonGrid>
-          {userDataInitialValues.permissions.includes('create requests') && (
-            <IonRow class="ion-padding-vertical ion-justify-content-center">
-              <IonButton
-                fill="solid"
-                expand="block"
-                color="iprimary"
-                class="ion-text-capitalize"
-                className={style['solicitud-button']}
-                onClick={() => {
-                  location.href = '/requests/assistant';
-                }}>
-                <IonIcon slot="icon-only" icon={addOutline} />
-                {isExpanded && <IonLabel>Solicitud</IonLabel>}
-              </IonButton>
-            </IonRow>
-          )}
           <IonRow>
             <IonList className={style['left-panel-ionlist']}>
               {menuItems.map((menuItem: Menu, idx: number) => (
@@ -211,6 +152,8 @@ const Sidebar = (props: SubState) => {
                             </IonLabel>
                           </IonRow>
                         )}
+
+
                       </IonCol>
                       <IonCol size="2" class="ion-no-padding ion-no-margin"></IonCol>
                     </IonRow>

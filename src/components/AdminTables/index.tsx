@@ -10,45 +10,24 @@ import {
   fileTrayOutline,
   searchSharp
 } from 'ionicons/icons';
-import { Waypoint } from "react-waypoint";
 import MUIDataTable, { MUIDataTableOptions, MUIDataTableColumn } from 'mui-datatables';
-import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 
 import {
   AdminCreateUserType,
-  AdminDeviceType,
-  AdminDoctorType,
   AdminEntityType,
-  AdminMaterialType,
   AdminOrganizationType,
-  AdminPatientType,
-  AdminPickupAddressType,
-  AdminTerminationType
 } from 'src/pages/Admin/types';
 import { setSearchStyles } from 'src/shared/common/styles';
-import { createRequestsTableMuiTheme } from 'src/shared/common/themes';
+import { adminTableTheme } from 'src/shared/common/themes';
 
 import { default as organizationsColumns } from './columns/organizations';
-import { default as materialsColumns } from './columns/materials';
-import { default as terminationsColumns } from './columns/terminations';
-import { default as devicesColumns } from './columns/devices';
-import { default as doctorsColumns } from './columns/doctors';
-import { default as pickupaddressesColumns } from './columns/pickupaddresses';
-import { default as patientsColumns } from './columns/patients';
 import { default as usersColumns } from './columns/users';
 
 import style from './style.module.scss';
-
-
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
-
 
 
 type SubState = {
@@ -192,18 +171,13 @@ const AdminTables = (props: SubState) => {
             </IconButton>
           </div>
         </div>
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={createRequestsTableMuiTheme}>
-            <MUIDataTable
-              title={""}
-              data={data}
-              columns={columns}
-              options={options} />
-          </ThemeProvider>
-        </StyledEngineProvider>
-        {rowsPerPage < data.length && (
-          <Waypoint bottomOffset="-20%" onEnter={() => setRowsPerPage(rowsPerPage + 10)} />
-        )}
+        <ThemeProvider theme={adminTableTheme}>
+          <MUIDataTable
+            title={""}
+            data={data}
+            columns={columns}
+            options={options} />
+        </ThemeProvider>
       </>
     )}
   </>;

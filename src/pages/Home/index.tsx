@@ -16,7 +16,7 @@ import numbro from 'numbro';
 
 import injector from 'src/baseplate/injector';
 import { EProps } from 'src/shared/common/types';
-// import SimpleLineGraph from 'src/components/SimpleLineGraph/Loadable';
+import SimpleLineGraph from 'src/components/SimpleLineGraph/Loadable';
 import Page from 'src/components/Page/Loadable';
 
 import {
@@ -30,7 +30,6 @@ import reducer from './reducer';
 import saga from './saga';
 import { InferMappedProps, SubState } from './types';
 import style from './style.module.scss';
-import VerticalBar from './VerticalBar';
 
 
 const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps) => {
@@ -58,7 +57,7 @@ const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps
             <IonCard>
               <IonCardHeader className="ion-float-left">
                 <IonCardTitle color="primary">
-                  {userDetails.gender == 'M' ? 'Bienvenido' : 'Bienvenida'} {userDetails.firstName} !
+                  Ionic React Template
                 </IonCardTitle>
                 <IonCardSubtitle color="gray30"></IonCardSubtitle>
               </IonCardHeader>
@@ -67,33 +66,33 @@ const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps
           <IonCol size="4">
             <IonCard>
               <IonCardHeader className="ion-float-left">
-                <IonCardSubtitle color="gray30">Pendientes</IonCardSubtitle>
+                <IonCardSubtitle color="gray30">Stat 1</IonCardSubtitle>
                 <IonCardTitle color="black">{numbro(0).format('00')}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent className="ion-float-right ion-no-padding">
-                {/* <SimpleLineGraph color="#FE2626" data={0} /> */}
+                <SimpleLineGraph color="#FE2626" data={0} />
               </IonCardContent>
             </IonCard>
           </IonCol>
           <IonCol size="4">
             <IonCard>
               <IonCardHeader className="ion-float-left">
-                <IonCardSubtitle color="gray30">Completos</IonCardSubtitle>
+                <IonCardSubtitle color="gray30">Stat 2</IonCardSubtitle>
                 <IonCardTitle color="black">{numbro(0).format('00')}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent className="ion-float-right ion-no-padding">
-                {/* <SimpleLineGraph color="#10BD85" data={0} /> */}
+                <SimpleLineGraph color="#10BD85" data={0} />
               </IonCardContent>
             </IonCard>
           </IonCol>
           <IonCol size="4">
             <IonCard>
               <IonCardHeader className="ion-float-left">
-                <IonCardSubtitle color="gray30">Totales</IonCardSubtitle>
+                <IonCardSubtitle color="gray30">Stat 3</IonCardSubtitle>
                 <IonCardTitle color="black">{numbro(0).format('00')}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent className="ion-float-right ion-no-padding">
-                {/* <SimpleLineGraph color="#0057FF" data={0} /> */}
+                <SimpleLineGraph color="#0057FF" data={0} />
               </IonCardContent>
             </IonCard>
           </IonCol>
@@ -102,7 +101,6 @@ const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps
           <IonCard className={style['data-table-card']}>
             <IonCardHeader>
               <IonCardTitle color="gray30">
-                <VerticalBar metrics={userDetails}></VerticalBar>
               </IonCardTitle>
             </IonCardHeader>
           </IonCard>

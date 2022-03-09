@@ -11,18 +11,22 @@ import {
   IonCol,
   IonProgressBar,
   IonToast,
-  IonRouterLink
 } from '@ionic/react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { compose, Dispatch, Action } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import { Controller, FieldErrors, UnpackNestedValue, useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ThemeProvider } from '@mui/material/styles';
 
 import injector from 'src/baseplate/injector';
-import { EProps } from 'src/shared/common/types';
-import { validateEmail } from 'src/shared/common/helpers';
-import { createLoginMuiTheme } from 'src/shared/common/themes';
+import { EProps, LoginFormType } from 'src/shared/common/types';
+import { loginFormSchema } from 'src/shared/common/schemas';
+import { loginFormInitialValues } from 'src/shared/common/values';
+import { flattenObject } from 'src/shared/common/helpers';
+import { loginFormTheme } from 'src/shared/common/themes';
 import logo from 'src/assets/images/svg/logo.svg';
 
 import {
@@ -38,63 +42,36 @@ import { InferMappedProps, SubState } from './types';
 import style from './style.module.scss';
 
 
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
-
-
-
 const Login: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps) => {
 
   const { handleLogin, setAlertMessage } = eProps;
   const { userLoggingIn, alertMessage } = props;
 
-  const [ email, setEmail ] = useState<string>('');
-  const [ password, setPassword ] = useState<string>('');
-  const [ validEmail, setValidEmail ] = useState<boolean>(false);
-  const [ validPassword, setValidPassword ] = useState<boolean>(false);
-  const [ emailErrorMessage, setEmailErrorMessage ] = useState<string>(' ');
-  const [ passwordErrorMessage, setPasswordErrorMessage ] = useState<string>(' ');
   const [ showToast, setShowToast ] = useState<boolean>(false);
+
+  const {
+    handleSubmit,
+    control,
+  } = useForm<LoginFormType>({
+    defaultValues: loginFormInitialValues,
+    resolver: yupResolver(loginFormSchema),
+  });
+
+  const onValidSubmit = (values: UnpackNestedValue<LoginFormType>, event?: React.BaseSyntheticEvent) => {
+    handleLogin(values.email, values.password);
+  };
+
+  const onInvalidSubmit = (errors: FieldErrors<LoginFormType>, event?: React.BaseSyntheticEvent) => {
+    const flattenedErrors = flattenObject(errors);
+    const firstError = Object.keys(flattenedErrors).filter((e) => e.endsWith('.message'))[0];
+    setAlertMessage(`Error: ${flattenedErrors[firstError]}`);
+  };
 
   useEffect(() => {
     if (!alertMessage) return;
     setShowToast(true);
   }, [alertMessage]);
 
-  const handleEmailChange = (email: string) => {
-    setEmail(email);
-    if (!email) {
-      setEmailErrorMessage('Por favor introduce tu correo electrónico');
-      setValidEmail(false);
-      return;
-    }
-    if (validateEmail(email) === false) {
-      setEmailErrorMessage('Correo electrónico inválido');
-      setValidEmail(false);
-      return;
-    }
-    setEmailErrorMessage(' ');
-    setValidEmail(true);
-  }
-
-  const handlePasswordChange = (password: string) => {
-    setPassword(password);
-    if (!password) {
-      setPasswordErrorMessage('Por favor introduce tu contraseña');
-      setValidPassword(false);
-      return;
-    }
-    if (password.length < 6) {
-      setPasswordErrorMessage('La contraseña debe tener 6 caracteres o más');
-      setValidPassword(false);
-      return;
-    }
-    setPasswordErrorMessage(' ');
-    setValidPassword(true);
-  }
 
   return <>
     <IonPage className={style['login-page']}>
@@ -105,68 +82,86 @@ const Login: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProp
             <IonCol size="8">
               <IonCard className={style['login-card']}>
                 <IonCardContent>
-                  <IonGrid>
-                    <IonRow class="ion-justify-content-center ion-padding-bottom">
-                      <img src={logo} className="ion-padding-vertical" />
-                    </IonRow>
-                    <IonRow class="ion-justify-content-center ion-padding-vertical">
-                      <IonTitle color={userLoggingIn ? 'gray30' : 'black'} class="ion-text-center">
-                        Iniciar Sesión
-                      </IonTitle>
-                    </IonRow>
-                    <StyledEngineProvider injectFirst>
-                      <ThemeProvider theme={createLoginMuiTheme}>
+                  <ThemeProvider theme={loginFormTheme}>
+                    <form onSubmit={handleSubmit(onValidSubmit, onInvalidSubmit)}>
+                      <IonGrid>
+                        <IonRow class="ion-justify-content-center ion-padding-bottom">
+                          <img src={logo} className="ion-padding-vertical" />
+                        </IonRow>
+                        <IonRow class="ion-justify-content-center ion-padding-vertical">
+                          <IonTitle color={userLoggingIn ? 'gray30' : 'black'} class="ion-text-center">
+                            Iniciar Sesión
+                          </IonTitle>
+                        </IonRow>
                         <IonRow class="ion-justify-content-center ion-padding-top">
-                          <TextField
-                            label="Correo Electrónico"
-                            variant="outlined"
-                            type="email"
+                          <Controller
+                            control={control}
                             name="email"
-                            value={email}
-                            autoComplete="off"
-                            disabled={userLoggingIn}
-                            error={email !== '' && !validEmail}
-                            helperText={emailErrorMessage}
-                            onChange={(e) => handleEmailChange(e.target.value)} />
+                            render={({
+                              field: { onChange, value, ref },
+                              fieldState: { error },
+                            }) => (
+                              <TextField
+                                autoComplete="off"
+                                type="email"
+                                variant="outlined"
+                                margin="dense"
+                                label="Email"
+                                disabled={userLoggingIn}
+                                value={value}
+                                onChange={onChange}
+                                inputRef={ref}
+                                error={Boolean(_.get(error, 'message', false))}
+                                helperText={_.get(error, 'message', '')}
+                              />
+                            )}
+                          />
                         </IonRow>
                         <IonRow class="ion-justify-content-center ion-padding-top">
-                          <TextField
-                            label="Contraseña"
-                            variant="outlined"
-                            type="password"
+                          <Controller
+                            control={control}
                             name="password"
-                            value={password}
-                            autoComplete="off"
-                            disabled={userLoggingIn}
-                            error={password !== '' && !validPassword}
-                            helperText={passwordErrorMessage}
-                            onChange={(e) => handlePasswordChange(e.target.value)} />
+                            render={({
+                              field: { onChange, value, ref },
+                              fieldState: { error },
+                            }) => (
+                              <TextField
+                                autoComplete="off"
+                                type="password"
+                                variant="outlined"
+                                margin="dense"
+                                label="Email"
+                                disabled={userLoggingIn}
+                                value={value}
+                                onChange={onChange}
+                                inputRef={ref}
+                                error={Boolean(_.get(error, 'message', false))}
+                                helperText={_.get(error, 'message', '')}
+                              />
+                            )}
+                          />
                         </IonRow>
-                      </ThemeProvider>
-                    </StyledEngineProvider>
-                    <IonRow class="ion-justify-content-center ion-padding-vertical">
-                      <IonRouterLink href="/passwordreset">¿Olvidaste tu contraseña?</IonRouterLink>
-                    </IonRow>
-                    <IonRow class="ion-justify-content-center">
-                      <IonButton
-                        color="primary"
-                        class="ion-text-capitalize"
-                        disabled={!(validEmail && validPassword)}
-                        onClick={() => handleLogin(email, password)}>
-                          Ingresar
-                      </IonButton>
-                    </IonRow>
-                    <IonRow class="ion-justify-content-center" style={{ height: '50px' }}>
-                      {userLoggingIn &&
-                        <IonProgressBar
-                          type="indeterminate"
-                          color="success"
-                          class="ion-margin-vertical"
-                          style={{ width: '60%' }}>
-                        </IonProgressBar>
-                      }
-                    </IonRow>
-                  </IonGrid>
+                        <IonRow class="ion-justify-content-center">
+                          <IonButton
+                            color="primary"
+                            class="ion-text-capitalize"
+                            type="submit">
+                            Ingresar
+                          </IonButton>
+                        </IonRow>
+                        <IonRow class="ion-justify-content-center" style={{ height: '50px' }}>
+                          {userLoggingIn && (
+                            <IonProgressBar
+                              type="indeterminate"
+                              color="success"
+                              class="ion-margin-vertical"
+                              style={{ width: '60%' }}>
+                            </IonProgressBar>
+                          )}
+                        </IonRow>
+                      </IonGrid>
+                    </form>
+                  </ThemeProvider>
                 </IonCardContent>
               </IonCard>
             </IonCol>

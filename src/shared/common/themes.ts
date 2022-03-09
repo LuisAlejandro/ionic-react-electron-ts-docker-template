@@ -1,12 +1,15 @@
-import lodashCloneDeep from 'lodash/cloneDeep'
-import { createTheme, DeprecatedThemeOptions, adaptV4Theme } from '@mui/material/styles';
+import {
+  createTheme,
+  DeprecatedThemeOptions,
+  adaptV4Theme
+} from '@mui/material/styles';
 
 
 // -------------------------------------------------------------------------------------
 //  Theme overrides
 // -------------------------------------------------------------------------------------
 
-export const createRequestMuiThemeConfig: DeprecatedThemeOptions = {
+export const adminModalThemeConfig: DeprecatedThemeOptions = {
   palette: {
     secondary: {
       main: '#0057FF',
@@ -149,111 +152,111 @@ export const createRequestMuiThemeConfig: DeprecatedThemeOptions = {
         border: '1px solid var(--ion-color-primary)',
       }
     },
-    MuiPickersBasePicker: {
-      pickerView: {
-        maxWidth: '200px',
-        minWidth: '200px',
-        minHeight: '230px',
-      }
-    },
-    MuiPickersCalendar: {
-      transitionContainer: {
-        minHeight: '144px',
-      },
-    },
-    MuiPickersCalendarHeader: {
-      transitionContainer: {
-        '& > *': {
-          fontFamily: 'var(--ion-font-family)',
-          fontWeight: 600,
-          fontSize: '10px',
-        }
-      },
-      dayLabel: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '10px',
-        margin: 0,
-        width: '27px',
-      },
-      switchHeader: {
-        marginTop: '0px',
-        marginBottom: '0px',
-      }
-    },
-    MuiPickersDay: {
-      current: {
-        backgroundColor: 'var(--ion-color-gray7)',
-      },
-      day: {
-        margin: '2px',
-        borderRadius: '4px',
-        width: '23px',
-        height: '16px',
-        '& > span': {
-          '& > p': {
-            fontFamily: 'var(--ion-font-family)',
-            fontWeight: 400,
-            fontSize: '10px',
-          }
-        }
-      },
-      daySelected: {
-        backgroundColor: 'var(--ion-color-primary)',
-        '&:hover': {
-          backgroundColor: 'rgba(var(--ion-color-primary-rgb), 0.6)',
-        }
-      },
-      dayDisabled: {
-      },
-    },
-    MuiPickersYearSelection: {
-      container: {
-        maxHeight: '230px',
-      },
-    },
-    MuiPickersYear:{
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        '&:focus': {
-          color: 'var(--ion-color-primary)',
-        }
-      },
-      yearSelected: {
-        color: 'var(--ion-color-primary)',
-      }
-    },
-    MuiPickersMonthSelection: {
-      container: {
-        maxHeight: '230px',
-        width: '210px'
-      },
-    },
-    MuiPickersMonth:{
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        height: '50px',
-        '&:focus': {
-          color: 'var(--ion-color-primary)',
-        }
-      },
-      monthSelected: {
-        color: 'var(--ion-color-primary)',
-      }
-    },
+    // MuiPickersBasePicker: {
+    //   pickerView: {
+    //     maxWidth: '200px',
+    //     minWidth: '200px',
+    //     minHeight: '230px',
+    //   }
+    // },
+    // MuiPickersCalendar: {
+    //   transitionContainer: {
+    //     minHeight: '144px',
+    //   },
+    // },
+    // MuiPickersCalendarHeader: {
+    //   transitionContainer: {
+    //     '& > *': {
+    //       fontFamily: 'var(--ion-font-family)',
+    //       fontWeight: 600,
+    //       fontSize: '10px',
+    //     }
+    //   },
+    //   dayLabel: {
+    //     fontFamily: 'var(--ion-font-family)',
+    //     fontWeight: 400,
+    //     fontSize: '10px',
+    //     margin: 0,
+    //     width: '27px',
+    //   },
+    //   switchHeader: {
+    //     marginTop: '0px',
+    //     marginBottom: '0px',
+    //   }
+    // },
+    // MuiPickersDay: {
+    //   current: {
+    //     backgroundColor: 'var(--ion-color-gray7)',
+    //   },
+    //   day: {
+    //     margin: '2px',
+    //     borderRadius: '4px',
+    //     width: '23px',
+    //     height: '16px',
+    //     '& > span': {
+    //       '& > p': {
+    //         fontFamily: 'var(--ion-font-family)',
+    //         fontWeight: 400,
+    //         fontSize: '10px',
+    //       }
+    //     }
+    //   },
+    //   daySelected: {
+    //     backgroundColor: 'var(--ion-color-primary)',
+    //     '&:hover': {
+    //       backgroundColor: 'rgba(var(--ion-color-primary-rgb), 0.6)',
+    //     }
+    //   },
+    //   dayDisabled: {
+    //   },
+    // },
+    // MuiPickersYearSelection: {
+    //   container: {
+    //     maxHeight: '230px',
+    //   },
+    // },
+    // MuiPickersYear:{
+    //   root: {
+    //     fontFamily: 'var(--ion-font-family)',
+    //     fontWeight: 400,
+    //     '&:focus': {
+    //       color: 'var(--ion-color-primary)',
+    //     }
+    //   },
+    //   yearSelected: {
+    //     color: 'var(--ion-color-primary)',
+    //   }
+    // },
+    // MuiPickersMonthSelection: {
+    //   container: {
+    //     maxHeight: '230px',
+    //     width: '210px'
+    //   },
+    // },
+    // MuiPickersMonth:{
+    //   root: {
+    //     fontFamily: 'var(--ion-font-family)',
+    //     fontWeight: 400,
+    //     height: '50px',
+    //     '&:focus': {
+    //       color: 'var(--ion-color-primary)',
+    //     }
+    //   },
+    //   monthSelected: {
+    //     color: 'var(--ion-color-primary)',
+    //   }
+    // },
     MuiSelect: {
       select: {
         '&:focus': {
           backgroundColor: 'transparent',
         },
       },
-      selectMenu: {
-        height: '13px',
-        minHeight: '13px',
-        lineHeight: '13px'
-      },
+      // selectMenu: {
+      //   height: '13px',
+      //   minHeight: '13px',
+      //   lineHeight: '13px'
+      // },
       icon: {
         width: '25px',
         height: '25px',
@@ -475,232 +478,12 @@ export const createRequestMuiThemeConfig: DeprecatedThemeOptions = {
   },
 };
 
-export const createRequestMuiTheme = createTheme(adaptV4Theme(createRequestMuiThemeConfig));
-
-const requestsTableMuiThemeConfig: DeprecatedThemeOptions = {
-  overrides: {
-    MuiPaper: {
-      root: {
-        display: 'flex',
-        flexDirection: 'column-reverse',
-        width: '100%'
-      }
-    },
-    MuiToolbar: {
-      root: {
-        order: 1,
-      }
-    },
-    MuiTable: {
-      root: {
-        order: 2,
-      }
-    },
-    MUIDataTableBody: {
-      emptyTitle:{
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-      }
-    },
-    MuiTablePagination: {
-      root: {
-        marginTop: '10px',
-        marginBottom: '10px',
-      },
-      caption: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-      }
-    },
-    MuiButton: {
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 500,
-        fontSize: '12px',
-        color: 'var(--ion-color-gray50)'
-      },
-    },
-    MuiTableCell: {
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        padding: '10px'
-      },
-      body: {
-        color: '#000',
-      },
-      footer: {
-        borderBottom: 0,
-        boxShadow: '0px 5px 15px rgba(0, 0, 0, .05)'
-      },
-    },
-  },
-};
-
-const scannersTableMuiThemeConfig: DeprecatedThemeOptions = {
+export const loginFormThemeConfig: DeprecatedThemeOptions = {
   palette: {
     secondary: {
       main: '#0057FF',
     },
   },
-  overrides: {
-    MuiPaper: {
-      root: {
-        width: '96%',
-        marginRight: '4%'
-      }
-    },
-    MUIDataTableBody: {
-      emptyTitle:{
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        padding: '20px',
-      }
-    },
-    MuiTablePagination: {
-      caption: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-      }
-    },
-    MuiButton: {
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 500,
-        fontSize: '12px',
-        color: 'var(--ion-color-gray50)'
-      },
-    },
-    MuiSvgIcon: {
-      root: {
-        width: '15px',
-        height: '15px',
-      },
-    },
-    MuiTableCell: {
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        padding: 0,
-        borderBottom: 0,
-      },
-      head: {
-        borderBottom: '1px solid var(--ion-color-gray7)',
-      },
-      body: {
-        color: '#000',
-      },
-      footer: {
-        borderBottom: 0,
-        boxShadow: '0px 5px 15px rgba(0, 0, 0, .05)'
-      },
-    },
-    MuiTableRow: {
-      root: {
-        height: '30px'
-      },
-    },
-    MUIDataTable: {
-      responsiveBase: {
-        height: '300px !important',
-      }
-    },
-    MUIDataTableHeadCell: {
-      data: {
-        color: 'var(--ion-color-primary)',
-        fontWeight: 400,
-        fontSize: '12px',
-      },
-      sortActive: {
-        color: 'var(--ion-color-primary)',
-        fontWeight: 600,
-        fontSize: '12px',
-      },
-    }
-  },
-};
-
-export const createRequestsTableMuiTheme = createTheme(adaptV4Theme(requestsTableMuiThemeConfig));
-export const createScannersTableMuiTheme = createTheme(adaptV4Theme(scannersTableMuiThemeConfig));
-
-export const requestDetailModalMuiTheme = createTheme(adaptV4Theme({
-  overrides: {
-    MuiStepper: {
-      root: {
-        width: '100%',
-        padding: '16px',
-        margin: '10px 0',
-        borderRadius: '5px',
-        backgroundColor: 'var(--ion-color-primary)'
-      },
-    },
-    MuiStepLabel: {
-      label: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        color: 'var(--ion-color-white)',
-        '&$alternativeLabel': {
-          marginTop: 5,
-        },
-        '&$active': {
-          color: 'var(--ion-color-white)',
-          fontWeight: 400,
-        },
-        '&$completed': {
-          color: 'var(--ion-color-white)',
-          fontWeight: 400,
-        },
-      },
-    },
-    MuiStepIcon: {
-      text: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        fill: 'var(--ion-color-primary)',
-        strokeWidth: '0px',
-      },
-      root: {
-        fill: '#fff',
-        stroke: 'var(--ion-color-gray7)',
-        strokeWidth: '1px',
-        '&$active': {
-          fill: 'var(--ion-color-success)',
-          color: 'var(--ion-color-success)',
-          strokeWidth: '0px',
-          '& .MuiStepIcon-text': {
-            fill: '#fff',
-          },
-        },
-        '&$completed': {
-          fill: 'var(--ion-color-success)',
-          color: 'var(--ion-color-success)',
-          strokeWidth: '0px',
-        },
-      },
-    },
-    MuiStepConnector: {
-      alternativeLabel: {
-        top: '10px',
-        left: 'calc(-50% + 10px)',
-        right: 'calc(50% + 10px)',
-        position: 'absolute',
-      },
-      line: {
-        borderColor: 'var(--ion-color-white)',
-      },
-    },
-  },
-}));
-
-export const createLoginMuiTheme = createTheme(adaptV4Theme({
   overrides: {
     MuiFormLabel: {
       root: {
@@ -763,9 +546,14 @@ export const createLoginMuiTheme = createTheme(adaptV4Theme({
       }
     },
   },
-}));
+};
 
-export const createPatientsTableMuiTheme = createTheme(adaptV4Theme({
+export const adminTableThemeConfig: DeprecatedThemeOptions = {
+  palette: {
+    secondary: {
+      main: '#0057FF',
+    },
+  },
   overrides: {
     MuiPaper: {
       root: {
@@ -784,23 +572,23 @@ export const createPatientsTableMuiTheme = createTheme(adaptV4Theme({
         order: 2,
       }
     },
-    MUIDataTableBody: {
-      emptyTitle:{
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-      }
-    },
+    // MUIDataTableBody: {
+    //   emptyTitle:{
+    //     fontFamily: 'var(--ion-font-family)',
+    //     fontWeight: 400,
+    //     fontSize: '12px',
+    //   }
+    // },
     MuiTablePagination: {
       root: {
         marginTop: '10px',
         marginBottom: '10px',
       },
-      caption: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-      }
+      // caption: {
+      //   fontFamily: 'var(--ion-font-family)',
+      //   fontWeight: 400,
+      //   fontSize: '12px',
+      // }
     },
     MuiButton: {
       root: {
@@ -826,140 +614,8 @@ export const createPatientsTableMuiTheme = createTheme(adaptV4Theme({
       },
     },
   },
-}));
-
-export const createPathologiesIndicationsCardTheme = createTheme(adaptV4Theme({
-  palette: {
-    primary: {
-      main: '#0057FF',
-    },
-  },
-  overrides: {
-    MuiFormControlLabel: {
-      label: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        color: 'var(--ion-color-gray50)'
-      },
-    },
-    MuiRadio: {
-      root: {
-        color: 'var(--ion-font-gray30)',
-        padding: '2px',
-      },
-    },
-    MuiCheckbox: {
-      root: {
-        color: 'var(--ion-font-gray30)',
-        padding: '2px',
-      },
-    },
-    MuiSvgIcon: {
-      root: {
-        width: '15px',
-        height: '15px',
-      },
-    },
-    MuiFormLabel: {
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-        color: 'var(--ion-color-gray50)',
-        '&$focused': {
-          color: 'var(--ion-color-primary)',
-        },
-      },
-    },
-    MuiOutlinedInput: {
-      root: {
-        borderWidth: '1px',
-        '& $notchedOutline': {
-          borderColor: 'var(--ion-color-gray30)',
-          borderWidth: '1px',
-        },
-        '&:hover $notchedOutline': {
-          borderColor: 'var(--ion-color-gray70)',
-        },
-        '&$focused $notchedOutline': {
-          borderColor: 'var(--ion-color-primary)',
-          borderWidth: '1px',
-        },
-        '&$error $notchedOutline': {
-          borderColor: 'var(--ion-color-danger30)',
-        },
-        '&$error:hover $notchedOutline': {
-          borderColor: 'var(--ion-color-danger)',
-        },
-      },
-      input: {
-        color: 'var(--ion-color-black)',
-        padding: '5px 10px'
-      },
-    },
-    MuiFormGroup: {
-      root: {
-        height: '28px'
-      }
-    },
-    MuiInputLabel: {
-      outlined: {
-        transform: 'translate(10px, 6px) scale(1)',
-        '&$shrink': {
-          transform: 'translate(15px, -6px) scale(0.9)',
-        },
-      },
-    },
-    MuiTextField: {
-      root: {
-        width: '96%',
-        margin: '2px 2%'
-      },
-    },
-    MuiInputBase: {
-      input: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '12px',
-      },
-    },
-    MuiFormHelperText: {
-      root: {
-        fontFamily: 'var(--ion-font-family)',
-        fontWeight: 400,
-        fontSize: '10px !important',
-        '&$error': {
-          fontFamily: 'var(--ion-font-family)',
-          fontWeight: 400,
-          fontSize: '10px !important',
-        },
-      },
-    },
-  },
-}));
-
-export const requestsTableMuiThemeGenerator = (mode: string) => {
-  if (mode == 'full') {
-    return createRequestsTableMuiTheme;
-  }
-  const minimalRequestsTableMuiThemeConfig: any = lodashCloneDeep(requestsTableMuiThemeConfig);
-  minimalRequestsTableMuiThemeConfig.overrides.MuiTableCell.root['borderBottom'] = '1px solid var(--ion-color-gray7)';
-  return createTheme(adaptV4Theme(minimalRequestsTableMuiThemeConfig));
 };
 
-export const datePickerMuiThemeGenerator = (width: number/*, isOpen: boolean, hasError: boolean*/) => {
-  const datePickerMuiThemeConfig: any = lodashCloneDeep(createRequestMuiThemeConfig);
-  datePickerMuiThemeConfig.overrides.MuiPickersBasePicker.pickerView.maxWidth = `${width - 3}px`;
-  datePickerMuiThemeConfig.overrides.MuiPickersBasePicker.pickerView.minWidth = `${width - 3}px`;
-  // datePickerMuiThemeConfig.overrides.MuiOutlinedInput
-  //   .root['& $notchedOutline'].borderColor = hasError ?
-  //     'var(--ion-color-danger)' : isOpen ? 'var(--ion-color-primary)' : 'var(--ion-color-gray30)';
-  // datePickerMuiThemeConfig.overrides.MuiInputLabel
-  //   .outlined['&$shrink'].color = hasError ?
-  //     'var(--ion-color-danger)' : isOpen ? 'var(--ion-color-primary)' : 'var(--ion-color-gray30)';
-  // datePickerMuiThemeConfig.overrides.MuiPaper
-  //   .outlined.borderColor = hasError ?
-  //     'var(--ion-color-danger)' : isOpen ? 'var(--ion-color-primary)' : 'var(--ion-color-gray30)';
-  return createTheme(adaptV4Theme(datePickerMuiThemeConfig));
-};
+export const adminTableTheme = createTheme(adaptV4Theme(adminTableThemeConfig));
+export const adminModalTheme = createTheme(adaptV4Theme(adminModalThemeConfig));
+export const loginFormTheme = createTheme(adaptV4Theme(loginFormThemeConfig));
