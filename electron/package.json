@@ -1,0 +1,58 @@
+{
+  "name": "soleit",
+  "version": "1.0.0",
+  "description": "An Ionic React project",
+  "main": "./build/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "electron:start": "yarn run build && electron ./",
+    "electron:pack": "yarn run build && electron-builder build --dir",
+    "electron:build-windows": "yarn run build && electron-builder build --windows",
+    "electron:build-mac": "yarn run build && electron-builder build --mac",
+    "electron:build-linux": "yarn run build && electron-builder build --linux",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@capacitor-community/electron": "^3.0.0",
+    "electron-is-dev": "~2.0.0",
+    "electron-serve": "~1.1.0"
+  },
+  "devDependencies": {
+    "electron": "~13.1.3",
+    "electron-builder": "~22.11.7",
+    "typescript": "~4.3.4"
+  },
+  "keywords": [
+    "capacitor",
+    "electron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "build": {
+    "appId": "app.soleit.soleit",
+    "productName": "Soleit",
+    "asar": false,
+    "files": [
+      "app/**",
+      "assets/**",
+      "build/**",
+      "plugins/**",
+      "capacitor.config.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg",
+      "icon": "assets/icon.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "protocols": {
+      "name": "soleit-protocol",
+      "schemes": [
+        "soleit"
+      ]
+    }
+  }
+}

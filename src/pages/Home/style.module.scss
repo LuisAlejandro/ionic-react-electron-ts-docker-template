@@ -1,0 +1,37 @@
+.home {
+  ion-card {
+    box-shadow: none;
+    ion-card-subtitle {
+      font-weight: 400;
+      font-size: 12px;
+    }
+    ion-card-title {
+      font-weight: 500;
+      font-size: 26px;
+    }
+  }
+  .segment-card {
+    width: 50%;
+    background: transparent;
+    position: absolute;
+    left: 24px;
+    top: 141px;
+    z-index: 9999;
+    ion-segment-button {
+      text-transform: none;
+    }
+    ion-label {
+      font-weight: 400;
+      font-size: 12px;
+    }
+  }
+  .data-table-card {
+    width: 100%;
+    padding: 60px 0;
+    .status-chip {
+      background: rgba(var(--ion-color-base-rgb), 1);
+      font-weight: 500;
+      font-size: 12px;
+    }
+  }
+}

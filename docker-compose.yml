@@ -1,0 +1,23 @@
+version: "3"
+services:
+  ionic-app:
+    image: luisalejandro/ionic-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/home/ionic/app
+    ports:
+      - '8100:8100'
+    environment:
+      - FAST_REFRESH=true
+      - GENERATE_SOURCEMAP=false
+      - TSC_COMPILE_ON_ERROR=true
+      - REACT_EDITOR=none
+      - BROWSER=none
+      - HOST=0.0.0.0
+      - PORT=8100
+      - PUBLIC_URL=http://localhost:8100
+      - API_LOCAL_URL=http://localhost:2017
+      - API_REMOTE_URL=http://api-app.soleitapp.com
+      - TRANSLATOR_BASE_URL=http://localhost:5000

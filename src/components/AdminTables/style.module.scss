@@ -1,0 +1,22 @@
+.admin-tables {
+  .nodata {
+    height: 600px;
+    ion-icon {
+      height: 100px;
+      width: 100px;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+      position: absolute;
+    }
+    ion-text {
+      top: calc(50% + 75px);
+      left: calc(50% - 125px);
+      position: absolute;
+      color: var(--ion-color-gray30);
+      font-weight: 400;
+      font-size: 14px;
+      width: 250px;
+      text-align: center;
+    }
+  }
+}

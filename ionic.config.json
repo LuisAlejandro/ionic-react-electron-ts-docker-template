@@ -1,0 +1,7 @@
+{
+  "name": "soleit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

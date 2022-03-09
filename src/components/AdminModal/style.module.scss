@@ -1,0 +1,25 @@
+.admin-modal {
+  --width: 800px;
+  --height: 530px;
+  .admin-modal-content {
+    width: 100%;
+    --background: var(--ion-color-gray5);
+    ion-title {
+      font-weight: 600;
+    }
+    ion-icon {
+      height: 20px;
+      width: 20px;
+    }
+    ion-card {
+      width: 100%;
+      box-shadow: none;
+      border-radius: 10px;
+      overflow: visible;
+      ion-card-content {
+        width: 100%;
+        overflow: visible;
+      }
+    }
+  }
+}
