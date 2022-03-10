@@ -19,13 +19,12 @@ import FormLabel from '@mui/material/FormLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import makeStyles from '@mui/styles/makeStyles';
 
 import {
-  setFormHelperTextStyle,
-  setOutlinedSelectTextFieldStyle,
-  setFormControlFieldsetStyle,
-  setFormControlFieldsetLabelStyle,
+  makeFormHelperTextStyle,
+  makeFormControlFieldsetLabelStyle,
+  makeFormControlFieldsetStyle,
+  makeOutlinedSelectTextFieldStyle,
 } from 'src/shared/common/styles';
 import request from 'src/baseplate/request';
 import { authHeader } from 'src/shared/common/helpers';
@@ -45,15 +44,15 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
 
   const { children, control, setAlertMessage } = props;
 
-  const ApiHost = process.env.REACT_APP_API_URL || 'http://api-app.soleitapp.com';
+  const ApiHost = process.env.REACT_APP_API_URL;
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [ uploadingFiles, setUploadingFiles ] = useState<boolean>(false);
 
-  const formHelperTextStyle = makeStyles(setFormHelperTextStyle)();
-  const formControlFieldsetLabelStyle = makeStyles(setFormControlFieldsetLabelStyle)();
-  const formControlFieldsetStyle = makeStyles(setFormControlFieldsetStyle)();
-  const outlinedSelectTextFieldStyle = makeStyles(setOutlinedSelectTextFieldStyle)();
+  const formHelperTextStyle = makeFormHelperTextStyle();
+  const formControlFieldsetLabelStyle = makeFormControlFieldsetLabelStyle();
+  const formControlFieldsetStyle = makeFormControlFieldsetStyle();
+  const outlinedSelectTextFieldStyle = makeOutlinedSelectTextFieldStyle();
 
   return (
     <IonGrid class="ion-no-padding ion-margin-vertical">
@@ -74,11 +73,11 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                                    error={Boolean(lodashGet(error, 'message', false))}
                                    classes={{
                                      root: Boolean(lodashGet(error, 'message', false)) ?
-                                             formControlFieldsetStyle.rootWithErrors :
-                                             formControlFieldsetStyle.root
+                                             formControlFieldsetStyle.classes.rootWithErrors :
+                                             formControlFieldsetStyle.classes.root
                                    }}>
                         <FormLabel component="legend" error={Boolean(lodashGet(error, 'message', false))}
-                                   classes={{ root: formControlFieldsetLabelStyle.root }}>
+                                   classes={{ root: formControlFieldsetLabelStyle.classes.root }}>
                           Logo
                         </FormLabel>
                         <IonThumbnail slot="start" style={{ width: '100%', height: '170px' }}>
@@ -86,7 +85,7 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                         </IonThumbnail>
                       </FormControl>
                       <FormHelperText error={Boolean(lodashGet(error, 'message', false))}
-                                      classes={{ root: formHelperTextStyle.root }}>
+                                      classes={{ root: formHelperTextStyle.classes.root }}>
                         {lodashGet(error, 'message', '')}
                       </FormHelperText>
                     </IonRow>
@@ -197,9 +196,9 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                       fieldState: { error },
                     }) => (
                       <TextField
-                        autoComplete="off"
                         fullWidth
                         select
+                        autoComplete="off"
                         type="text"
                         label="Tipo"
                         variant="outlined"
@@ -210,13 +209,13 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                           MenuProps: {
                             classes: {
                               paper: Boolean(lodashGet(error, 'message', false)) ?
-                                      outlinedSelectTextFieldStyle.paperWithErrors :
-                                      outlinedSelectTextFieldStyle.paper
+                                      outlinedSelectTextFieldStyle.classes.paperWithErrors :
+                                      outlinedSelectTextFieldStyle.classes.paper
                             },
                             PaperProps: {
                               square: true,
                               variant: 'outlined',
-                              component: SelectScrollbars as any,
+                              // component: SelectScrollbars as any,
                             },
                             TransitionComponent: Collapse,
                             transitionDuration: 100,
@@ -232,7 +231,7 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                             marginThreshold: -50,
                             autoFocus: false,
                             anchorReference: 'anchorEl',
-                            getContentAnchorEl: null,
+                            // getContentAnchorEl: null,
                           }
                         }}
                         error={Boolean(lodashGet(error, 'message', false))}

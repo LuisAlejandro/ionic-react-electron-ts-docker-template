@@ -1,7 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 
-import history from 'src/baseplate/history';
-
 import { Actions } from './constants';
 import { userService } from './services';
 import { userActions, alertActions } from './actions';
@@ -21,7 +19,7 @@ function* userLoginFormSubmitSaga(action: any) {
     yield put(userActions.userLoginSuccess({
       userLoggedIn: true,
     }));
-    yield call(history.push, '/home');
+    location.href = '/home';
   } catch (err: any) {
     yield put(alertActions.setAlert({
       alertMessage: err.message,

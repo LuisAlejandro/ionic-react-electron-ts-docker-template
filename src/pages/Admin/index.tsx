@@ -38,11 +38,17 @@ import {
   SubState,
   AdminEntityType,
   AdminOrganizationType,
-  AdminCreateUserType
+  AdminRoleType,
+  AdminPermissionType,
+  AdminCreateUserType,
+  AdminUpdateUserType,
 } from './types';
 import {
   adminOrganizationInitialValues,
+  adminRoleInitialValues,
+  adminPermissionInitialValues,
   adminCreateUserInitialValues,
+  adminUpdateUserInitialValues,
 } from './schemas';
 import style from './style.module.scss';
 
@@ -75,11 +81,11 @@ const Admin: React.FC<InferMappedProps> = ({ eProps, ...props}: InferMappedProps
     title: 'Organizaciones',
     initialValues: adminOrganizationInitialValues as AdminOrganizationType,
   } : type == 'roles' ? {
-    title: 'Materiales',
-    initialValues: adminMaterialInitialValues as AdminMaterialType,
+    title: 'Roles',
+    initialValues: adminRoleInitialValues as AdminRoleType,
   } : type == 'permissions' ? {
-    title: 'Materiales',
-    initialValues: adminMaterialInitialValues as AdminMaterialType,
+    title: 'Permisos',
+    initialValues: adminPermissionInitialValues as AdminPermissionType,
   } : {
     title: 'Usuarios',
     initialValues: adminCreateUserInitialValues as AdminCreateUserType,

@@ -5,6 +5,7 @@ import {
   userDetailsSchema,
   organizationDetailsSchema,
   roleDetailsSchema,
+  permissionDetailsSchema,
   userDataDetailsSchema,
   authDataDetailsSchema,
   loginFormSchema
@@ -31,6 +32,7 @@ export type BaseplateResp = string | object | object[] | null;
 export type UserType = yup.InferType<typeof userDetailsSchema>;
 export type OrganizationType = yup.InferType<typeof organizationDetailsSchema>;
 export type RoleType = yup.InferType<typeof roleDetailsSchema>;
+export type PermissionType = yup.InferType<typeof permissionDetailsSchema>;
 export type AuthDataType = Except<yup.InferType<typeof authDataDetailsSchema>, 'password' | 'password2'>;
 
 export type LoginFormType = yup.InferType<typeof loginFormSchema>;

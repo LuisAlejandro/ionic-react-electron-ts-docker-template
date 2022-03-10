@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {
   IonApp,
   IonRouterOutlet,
+  setupIonicReact
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
@@ -36,8 +37,13 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './popover.scss';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 
+
+setupIonicReact({
+  mode: 'md'
+});
 
 const SoleitApp: React.FC = () => {
   
@@ -72,7 +78,7 @@ const SoleitApp: React.FC = () => {
             <PrivateRoute exact path="/admin/:type" component={Admin} />
             <PrivateRoute exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/" render={() => (<Redirect to="/home" />)} />
+            <Route render={() => (<Redirect to="/home" />)} />
           </IonRouterOutlet>
         </IonReactRouter>
       </CacheProvider>

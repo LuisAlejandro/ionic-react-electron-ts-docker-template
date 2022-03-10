@@ -1,4 +1,3 @@
-import * as path from 'path';
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios';
 
 import { BaseplateResp } from 'src/shared/common/types';
@@ -53,7 +52,7 @@ export default function request(options: AxiosRequestConfig): Promise<BaseplateR
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
     if (err.response.status === 401) {
-      if (err.config.url && path.basename(err.config.url) !== 'login') {
+      if (err.config.url && err.config.url !== '/login') {
         // auto logout if 401 response returned from api
         localStorage.removeItem('user');
         location.reload();

@@ -1,10 +1,11 @@
+import { AxiosRequestHeaders } from "axios";
 
 
 export const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-export const authHeader = (): HeadersInit => {
+export const authHeader = () => {
   // return authorization header with jwt token
-  let headers: HeadersInit = {
+  let headers: AxiosRequestHeaders = {
     'Content-Type': 'application/json'
   };
   const user = JSON.parse(localStorage.getItem('user') as string);

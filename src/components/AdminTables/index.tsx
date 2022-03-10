@@ -10,9 +10,11 @@ import {
   fileTrayOutline,
   searchSharp
 } from 'ionicons/icons';
-import MUIDataTable, { MUIDataTableOptions, MUIDataTableColumn } from 'mui-datatables';
+import MUIDataTable, {
+  // MUIDataTableOptions,
+  // MUIDataTableColumn
+} from 'mui-datatables';
 import { ThemeProvider } from '@mui/material/styles';
-import makeStyles from '@mui/styles/makeStyles';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 
@@ -21,7 +23,7 @@ import {
   AdminEntityType,
   AdminOrganizationType,
 } from 'src/pages/Admin/types';
-import { setSearchStyles } from 'src/shared/common/styles';
+import { makeSearchStyles } from 'src/shared/common/styles';
 import { adminTableTheme } from 'src/shared/common/themes';
 
 import { default as organizationsColumns } from './columns/organizations';
@@ -38,6 +40,9 @@ type SubState = {
   refreshEntities: () => void,
 };
 
+type MUIDataTableOptions = any;
+type MUIDataTableColumn = any;
+
 const AdminTables = (props: SubState) => {
 
   const {
@@ -49,9 +54,8 @@ const AdminTables = (props: SubState) => {
   } = props;
   
   const [ searchText, setSearchText ] = useState('');
-  const [ rowsPerPage, setRowsPerPage ] = useState<number>(20);
   
-  const searchStyles = makeStyles(setSearchStyles)();
+  const searchStyles = makeSearchStyles();
   
   const options: MUIDataTableOptions = {
     filterType: 'dropdown',
@@ -66,7 +70,7 @@ const AdminTables = (props: SubState) => {
     searchText,
     customSearchRender: () => <IonTitle></IonTitle>,
     selectableRows: 'none',
-    rowsPerPage,
+    rowsPerPage: 10,
     rowsPerPageOptions: [],
     enableNestedDataAccess: '.',
     textLabels: {
@@ -103,24 +107,6 @@ const AdminTables = (props: SubState) => {
   } = type == 'organizations' ? {
     title: 'organizaciones',
     columns: organizationsColumns({ data: data as AdminOrganizationType[], showModal, deleteEntities }),
-  } : type == 'materials' ? {
-    title: 'materiales',
-    columns: materialsColumns({ data: data as AdminMaterialType[], showModal, deleteEntities }),
-  } : type == 'terminations' ? {
-    title: 'terminaciones',
-    columns: terminationsColumns({ data: data as AdminTerminationType[], showModal, deleteEntities }),
-  } : type == 'devices' ? {
-    title: 'equipos',
-    columns: devicesColumns({ data: data as AdminDeviceType[], showModal, deleteEntities }),
-  } : type == 'doctors' ? {
-    title: 'doctores',
-    columns: doctorsColumns({ data: data as AdminDoctorType[], showModal, deleteEntities }),
-  } : type == 'pickupaddresses' ? {
-    title: 'direcciones',
-    columns: pickupaddressesColumns({ data: data as AdminPickupAddressType[], showModal, deleteEntities }),
-  } : type == 'patients' ? {
-    title: 'pacientes',
-    columns: patientsColumns({ data: data as AdminPatientType[], showModal, deleteEntities }),
   } : {
     title: 'usuarios',
     columns: usersColumns({ data: data as AdminCreateUserType[], showModal, deleteEntities }),
@@ -135,17 +121,17 @@ const AdminTables = (props: SubState) => {
         </div>
       </div>
     ) : (
-      <>
-        <div className={searchStyles.root}>
-          <div className={searchStyles.searchContainer}>
-            <div className={searchStyles.search}>
-              <div className={searchStyles.searchIcon}>
+      <div className={style['admin-tables']}>
+        <div className={style['root']}>
+          <div className={style['searchContainer']}>
+            <div className={style['search']}>
+              <div className={style['searchIcon']}>
                 <IonIcon size="small" color="black" icon={searchSharp} />
               </div>
               <InputBase
                 placeholder="Buscar"
                 classes={{
-                  input: searchStyles.inputInput,
+                  input: searchStyles.classes.inputInput,
                 }}
                 inputProps={{
                   'aria-label': 'Buscar',
@@ -153,7 +139,7 @@ const AdminTables = (props: SubState) => {
                 value={searchText}
                 onChange={(e: any) => setSearchText(e.target.value)} />
               {searchText != '' && (
-                <div className={searchStyles.clearIcon}>
+                <div className={style['clearIcon']}>
                   <IconButton
                     size="small"
                     onClick={() => setSearchText('')}>
@@ -163,7 +149,7 @@ const AdminTables = (props: SubState) => {
               )}
             </div>
           </div>
-          <div className={searchStyles.refreshIcon}>
+          <div className={style['refreshIcon']}>
             <IconButton
               size="small"
               onClick={refreshEntities}>
@@ -178,7 +164,7 @@ const AdminTables = (props: SubState) => {
             columns={columns}
             options={options} />
         </ThemeProvider>
-      </>
+      </div>
     )}
   </>;
 };

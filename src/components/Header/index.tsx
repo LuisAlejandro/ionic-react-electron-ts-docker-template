@@ -12,19 +12,21 @@ import {
   IonListHeader,
   IonPopover,
   IonLabel,
+  IonContent
 } from '@ionic/react';
 import {
   logOutOutline,
   ellipseSharp,
+  alertCircleSharp,
 } from 'ionicons/icons';
 
+import history from 'src/baseplate/history';
 import { userDataInitialValues } from 'src/shared/common/values';
 import OrgLogo from 'src/assets/images/png/orglogo.png';
 import AvatarImg from 'src/assets/images/png/avatar.png';
 
 import { userService } from './services';
 import style from './style.module.scss';
-import './popover-patch.scss';
 
 
 type UserMenuState = {
@@ -51,10 +53,11 @@ const Header: React.FC = () => {
   const userLogout = () => {
     userService.logout();
   }
+  console.log(userDataInitialValues.permissions);
   
   return (
     <>
-      <IonPopover cssClass="user-menu-popover" translucent={true} showBackdrop={false}
+      <IonPopover class="user-menu-popover" translucent={true} showBackdrop={false}
         event={userMenuState.event} isOpen={userMenuState.showUserMenu}
         onDidDismiss={() => setUserMenuState({ showUserMenu: false, event: undefined })}>
         <div className="triangle-top"></div>
@@ -62,7 +65,7 @@ const Header: React.FC = () => {
           {userDataInitialValues.permissions.includes('view self') && (
             <IonItem class="header" button lines="full"
                     onClick={() => {
-                      location.href = '/users/profile/self';
+                      history.push('/users/profile/self');
                     }}>
               <IonGrid>
                 <IonRow class="ion-no-padding ion-no-margin">
@@ -93,7 +96,7 @@ const Header: React.FC = () => {
           </IonItem>
         </IonList>
       </IonPopover>
-      <IonPopover cssClass="notifications-menu-popover" translucent={true} showBackdrop={false}
+      <IonPopover class="notifications-menu-popover" translucent={true} showBackdrop={false}
         event={notificationsMenuState.event} isOpen={notificationsMenuState.showNotificationsMenu}
         onDidDismiss={() => setNotificationsMenuState({ showNotificationsMenu: false, event: undefined })}>
         <div className="triangle-top"></div>
@@ -145,6 +148,13 @@ const Header: React.FC = () => {
             </IonCol>
             <IonCol size="16" size-sm="12" size-md="8" size-xl="4" className={style['header-notifications']}>
               <IonButtons class="ion-justify-content-end">
+                <IonButton className={style['notifications']}
+                           onClick={(e: MouseEvent<HTMLIonButtonElement>) => {
+                             e.persist();
+                             setNotificationsMenuState({ showNotificationsMenu: true, event: e.nativeEvent })
+                           }}>
+                  <IonIcon size="small" icon={alertCircleSharp} />
+                </IonButton>
                 <IonButton className={style['user-menu-avatar']}
                            onClick={(e: MouseEvent<HTMLIonButtonElement>) => {
                              e.persist();

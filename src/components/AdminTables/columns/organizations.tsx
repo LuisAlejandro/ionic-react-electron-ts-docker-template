@@ -7,11 +7,11 @@ import {
   trashSharp
 } from 'ionicons/icons';
 import moment from 'moment';
-import {
-  MUIDataTableColumn,
-  MUIDataTableData,
-  MUIDataTableMeta
-} from 'mui-datatables';
+// import {
+//   MUIDataTableColumn,
+//   MUIDataTableData,
+//   MUIDataTableMeta
+// } from 'mui-datatables';
 
 import { AdminOrganizationType } from 'src/pages/Admin/types';
 import { userDataInitialValues } from 'src/shared/common/values';
@@ -23,6 +23,10 @@ type SubState = {
   showModal: (values: AdminOrganizationType) => void,
   deleteEntities: (id: string) => void,
 };
+
+type MUIDataTableColumn = any;
+type MUIDataTableData = any;
+type MUIDataTableMeta = any;
 
 const generateColumns = (props: SubState) => {
 

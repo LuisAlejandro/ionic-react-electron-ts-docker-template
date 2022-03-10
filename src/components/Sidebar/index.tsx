@@ -10,19 +10,19 @@ import {
   IonButtons,
 } from '@ionic/react';
 import {
-  addOutline,
   homeSharp,
-  readerSharp,
-  personSharp,
-  peopleSharp,
-  personCircleOutline,
   closeSharp,
+  businessOutline,
+  ribbonOutline,
+  keyOutline,
+  settingsSharp,
+  peopleOutline,
 } from 'ionicons/icons';
 
+import history from 'src/baseplate/history';
 import { userDataInitialValues } from 'src/shared/common/values';
 import divider from 'src/assets/images/svg/divider.svg';
 import dividerBlue from 'src/assets/images/svg/divider-blue.svg';
-import powered from 'src/assets/images/svg/powered.svg';
 
 import style from './style.module.scss';
 
@@ -60,7 +60,7 @@ const Sidebar = (props: SubState) => {
     {
       key: 'admin',
       label: 'Administrador',
-      icon: personCircleOutline,
+      icon: settingsSharp,
       permissions: [
         'view organizations',
         'view users',
@@ -74,7 +74,7 @@ const Sidebar = (props: SubState) => {
     {
       key: 'admin/organizations',
       label: 'Organizaciones',
-      icon: personCircleOutline,
+      icon: businessOutline,
       permissions: [
         'view organizations'
       ]
@@ -82,7 +82,7 @@ const Sidebar = (props: SubState) => {
     {
       key: 'admin/users',
       label: 'Usuarios',
-      icon: peopleSharp,
+      icon: peopleOutline,
       permissions: [
         'view users'
       ]
@@ -90,7 +90,7 @@ const Sidebar = (props: SubState) => {
     {
       key: 'admin/roles',
       label: 'Roles',
-      icon: personCircleOutline,
+      icon: ribbonOutline,
       permissions: [
         'view roles'
       ]
@@ -98,7 +98,7 @@ const Sidebar = (props: SubState) => {
     {
       key: 'admin/permissions',
       label: 'Permisos',
-      icon: personCircleOutline,
+      icon: keyOutline,
       permissions: [
         'view permissions'
       ]
@@ -130,7 +130,7 @@ const Sidebar = (props: SubState) => {
                       setSubMenuOpen(true);
                     } else {
                       setSubMenuOpen(false);
-                      location.href = `/${menuItem.key}`;
+                      history.push(`/${menuItem.key}`);
                     }
                   }}>
                   <IonGrid>
@@ -152,8 +152,6 @@ const Sidebar = (props: SubState) => {
                             </IonLabel>
                           </IonRow>
                         )}
-
-
                       </IonCol>
                       <IonCol size="2" class="ion-no-padding ion-no-margin"></IonCol>
                     </IonRow>
@@ -161,9 +159,6 @@ const Sidebar = (props: SubState) => {
                 </IonItem>
               ))}
             </IonList>
-          </IonRow>
-          <IonRow class="ion-padding-vertical ion-justify-content-center">
-            {isExpanded && <img src={powered} className={style["powered"]} />}
           </IonRow>
         </IonGrid>
       </IonCol>
@@ -192,16 +187,19 @@ const Sidebar = (props: SubState) => {
                     key={`admin-submenu-item-${subMenuItem.key}-${idx}`}
                     onClick={() => {
                       setSubMenuOpen(false);
-                      location.href = `/${subMenuItem.key}`;
+                      history.push(`/${subMenuItem.key}`);
                     }}>
                     <IonGrid>
                       <IonRow class="ion-no-padding ion-no-margin">
-                        <IonCol size="2" class="ion-no-padding ion-no-margin" style={{ height: '20px' }}>
+                        <IonCol size="1" class="ion-no-padding ion-no-margin" style={{ height: '20px' }}>
                           {subMenuItem.key == urlPathname && (
                             <img src={dividerBlue} className={style["divider-blue"]} />
                           )}
                         </IonCol>
-                        <IonCol size="20" class="ion-no-padding ion-no-margin">
+                        <IonCol size="5" class="ion-no-padding ion-no-margin" style={{ height: '20px' }}>
+                          <IonIcon size="small" icon={subMenuItem.icon} />
+                        </IonCol>
+                        <IonCol size="16" class="ion-no-padding ion-no-margin">
                           <IonRow class="ion-no-padding ion-no-margin">
                             <IonLabel
                               class="ion-no-margin"

@@ -16,8 +16,14 @@ import {
 } from './misc';
 
 
-const user = JSON.parse(localStorage.getItem('user') as string) as UserDataType;
-
+const initialUser = JSON.stringify({
+  id: '', firstName: '', lastName: '', email: '',
+  token: '', avatar: '', orgLogo: '', orgName: '',
+  orgId: '', role: '', permissions: [],
+});
+const localUser = localStorage.getItem('user');
+const user = JSON.parse(localUser || initialUser) as UserDataType;
+console.log(user);
 const userDetailsSchema = yup
   .object({
     id: idSchema,

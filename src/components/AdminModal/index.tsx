@@ -16,16 +16,11 @@ import {
 } from '@ionic/react';
 import {
   peopleCircleSharp,
-  locationSharp,
   personSharp,
-  pulseSharp,
-  phonePortraitSharp,
-  footstepsSharp,
   cubeSharp,
   closeSharp,
   saveSharp,
   checkmarkSharp,
-  peopleSharp,
 } from 'ionicons/icons';
 import {
   useForm,
@@ -40,15 +35,20 @@ import {
   adminOrganizationSchema,
   adminCreateUserSchema,
   adminUpdateUserSchema,
+  adminRoleSchema,
+  adminPermissionSchema,
   adminOrganizationInitialValues,
   adminCreateUserInitialValues,
   adminUpdateUserInitialValues,
+  adminRoleInitialValues,
+  adminPermissionInitialValues,
 } from 'src/pages/Admin/schemas';
 import {
-  AdminCreateUserType,
   AdminEntityType,
   AdminOrganizationType,
   AdminRoleType,
+  AdminPermissionType,
+  AdminCreateUserType,
   AdminUpdateUserType,
 } from 'src/pages/Admin/types';
 import { flattenObject } from 'src/shared/common/helpers';
@@ -57,6 +57,8 @@ import { userDataInitialValues } from 'src/shared/common/values';
 
 import { OrganizationsAdminModalContent } from './entities/organizations';
 import { UsersAdminModalContent } from './entities/users';
+import { RolesAdminModalContent } from './entities/roles';
+import { PermissionsAdminModalContent } from './entities/permissions';
 
 import style from './style.module.scss';
 
@@ -108,45 +110,18 @@ const AdminModal = (props: SubState) => {
     ModalContent: OrganizationsAdminModalContent,
     schema: adminOrganizationSchema,
     initialValues: adminOrganizationInitialValues as AdminOrganizationType,
-  } : type == 'materials' ? {
-    title: 'Materiales',
+  } : type == 'roles' ? {
+    title: 'Roles',
     icon: cubeSharp,
-    ModalContent: MaterialsAdminModalContent,
-    schema: adminMaterialSchema,
-    initialValues: adminMaterialInitialValues as AdminMaterialType,
-  } : type == 'terminations' ? {
-    title: 'Terminaciones',
-    icon: footstepsSharp,
-    ModalContent: TerminationsAdminModalContent,
-    schema: adminTerminationSchema,
-    initialValues: adminTerminationInitialValues as AdminTerminationType,
-  } : type == 'devices' ? {
-    title: 'Equipos',
-    icon: phonePortraitSharp,
-    ModalContent: DevicesAdminModalContent,
-    schema: adminDeviceSchema,
-    initialValues: adminDeviceInitialValues as AdminDeviceType,
-  } : type == 'doctors' ? {
-    title: 'Doctores',
-    icon: pulseSharp,
-    ModalContent: DoctorsAdminModalContent,
-    schema: adminDoctorSchema,
-    initialValues: adminDoctorInitialValues as AdminDoctorType,
-  } : type == 'pickupaddresses' ? {
-    title: isDelivery ? 'Direcciones de entrega' : 'Direcciones de retiro',
-    icon: locationSharp,
-    ModalContent: PickupAddressesAdminModalContent,
-    schema: isDelivery ?
-      adminDeliveryAddressSchema : adminPickupAddressSchema,
-    initialValues: isDelivery ?
-      adminDeliveryAddressInitialValues as AdminDeliveryAddressType :
-      adminPickupAddressInitialValues as AdminPickupAddressType,
-  } : type == 'patients' ? {
-    title: 'Pacientes',
-    icon: peopleSharp,
-    ModalContent: PatientsAdminModalContent,
-    schema: adminPatientSchema,
-    initialValues: adminPatientInitialValues as AdminPatientType,
+    ModalContent: RolesAdminModalContent,
+    schema: adminRoleSchema,
+    initialValues: adminRoleInitialValues as AdminRoleType,
+  } : type == 'permissions' ? {
+    title: 'Permisos',
+    icon: cubeSharp,
+    ModalContent: PermissionsAdminModalContent,
+    schema: adminPermissionSchema,
+    initialValues: adminPermissionInitialValues as AdminPermissionType,
   } : {
     title: 'Usuarios',
     icon: personSharp,
@@ -208,7 +183,7 @@ const AdminModal = (props: SubState) => {
   };
 
   return (
-    <IonModal backdropDismiss={false} isOpen={isOpen} cssClass={style['admin-modal']}>
+    <IonModal backdropDismiss={false} isOpen={isOpen} class={style['admin-modal']}>
       <IonContent className={style['admin-modal-content']}>
         <IonGrid>
           <IonRow class="ion-float-right">

@@ -70,7 +70,7 @@ const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps
                 <IonCardTitle color="black">{numbro(0).format('00')}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent className="ion-float-right ion-no-padding">
-                <SimpleLineGraph color="#FE2626" data={0} />
+                <SimpleLineGraph color="#FE2626" data={[1, 5, 3]} />
               </IonCardContent>
             </IonCard>
           </IonCol>
@@ -81,7 +81,7 @@ const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps
                 <IonCardTitle color="black">{numbro(0).format('00')}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent className="ion-float-right ion-no-padding">
-                <SimpleLineGraph color="#10BD85" data={0} />
+                <SimpleLineGraph color="#10BD85" data={[1, 5, 3]} />
               </IonCardContent>
             </IonCard>
           </IonCol>
@@ -92,7 +92,7 @@ const Home: React.FC<InferMappedProps> = ({ eProps, ...props }: InferMappedProps
                 <IonCardTitle color="black">{numbro(0).format('00')}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent className="ion-float-right ion-no-padding">
-                <SimpleLineGraph color="#0057FF" data={0} />
+                <SimpleLineGraph color="#0057FF" data={[1, 5, 3]} />
               </IonCardContent>
             </IonCard>
           </IonCol>

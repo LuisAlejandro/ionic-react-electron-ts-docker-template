@@ -9,22 +9,11 @@ import { Constants } from './constants';
 const getRequestConfig = (type: string) =>
   type == 'organizations' ?
     { model: { excludes: Constants.OrganizationsModelExcludes } } :
-  type == 'materials' ?
-    { model: { excludes: Constants.MaterialsModelExcludes } } :
-  type == 'terminations' ?
-    { model: { excludes: Constants.TerminationsModelExcludes } } :
-  type == 'devices' ?
-    { model: { excludes: Constants.DevicesModelExcludes } } :
-  type == 'doctors' ?
-    { model: { excludes: Constants.DoctorsModelExcludes } } :
-  type == 'pickupaddresses' ?
-    { model: { excludes: Constants.PickupAddressesModelExcludes } } :
-  type == 'patients' ?
-    { model: { excludes: Constants.PatientsModelExcludes } } :
+  type == 'roles' ?
+    { model: { excludes: Constants.RolesModelExcludes } } :
+  type == 'permissions' ?
+    { model: { excludes: Constants.PermissionsModelExcludes } } :
     { model: { excludes: Constants.UsersModelExcludes } };
-
-const rolesConfig = { model: { excludes: Constants.RolesModelExcludes } };
-
 
 const getOrganizations = (email: string, token: string) => {
   return request({
@@ -40,7 +29,7 @@ const getRoles = (email: string, token: string) => {
     url: `${Constants.ApiHost}/roles`,
     method: 'GET' as Method,
     headers: authHeader(),
-    params: { config: rolesConfig, email, token }
+    params: { config: getRequestConfig('roles'), email, token }
   });
 };
 

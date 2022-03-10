@@ -50,7 +50,7 @@ type SubState = {
   rolesList: AdminRoleType[],
 };
 
-export const UsersAdminModalContent = (props: SubState) => {
+export const PermissionsAdminModalContent = (props: SubState) => {
 
   const {
     children,

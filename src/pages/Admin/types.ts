@@ -5,6 +5,7 @@ import { Except } from 'type-fest';
 
 import {
   OrganizationType,
+  PermissionType,
   RoleType,
   UserType,
   UserDataType
@@ -15,12 +16,14 @@ import { Actions, Constants } from './constants';
 
 
 export type AdminRoleType = Except<RoleType, typeof Constants.RolesModelExcludes[number]>;
+export type AdminPermissionType = Except<PermissionType, typeof Constants.PermissionsModelExcludes[number]>;
 export type AdminOrganizationType = Except<OrganizationType, typeof Constants.OrganizationsModelExcludes[number]>;
 export type AdminCreateUserType = Except<UserType, typeof Constants.UsersModelExcludes[number]>;
 export type AdminUpdateUserType = Except<Except<UserType, typeof Constants.UsersModelExcludes[number]>, 'password' | 'password2'>;
 
 export type AdminEntityType = AdminUpdateUserType       |           // users (update)
                               AdminCreateUserType       |           // users (create)
+                              AdminPermissionType       |           // permissions
                               AdminOrganizationType     |           // organizations
                               AdminRoleType                         // roles
 
