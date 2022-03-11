@@ -26,16 +26,19 @@ serve-local-api: start
 launch-windows-app:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "yarn install ; yarn run build ; yarn run copy"
+		-Command "yarn install"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "yarn run build"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "yarn run copy-android"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn install"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "npx cap sync @capacitor-community/electron"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command "npx cap sync @capacitor-community/electron"
+		-Command "yarn run sync-electron"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn run electron:start"
@@ -43,16 +46,19 @@ launch-windows-app:
 build-windows-installer:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "yarn install ; yarn run build ; yarn run copy"
+		-Command "yarn install"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "yarn run build"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "yarn run copy-android"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn install"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "npx cap sync @capacitor-community/electron"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command "npx cap sync @capacitor-community/electron"
+		-Command "yarn run sync-electron"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn run electron:build-windows"
@@ -60,54 +66,55 @@ build-windows-installer:
 prepare-apk:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "yarn install ; yarn run build ; yarn run copy"
+		-Command "yarn install"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "cd electron ; yarn install"
+		-Command "yarn run build"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "npx cap sync"
+		-Command "yarn run copy-android"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "npx cap sync"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command "cd electron ; yarn run electron:build-windows"
+		-Command "yarn run sync-android"
 
 launch-mac-app:
 	rm -rf node_modules
 	rm -rf electron/node_modules
-	yarn install && yarn run build && yarn run copy
+	yarn install
+	yarn run build
+	yarn run copy-electron
 	cd electron && yarn install
-	npx cap sync @capacitor-community/electron || echo ""
-	npx cap sync @capacitor-community/electron || echo ""
+	yarn run sync-electron
 	cd electron && yarn run electron:start
 
 build-mac-installer:
 	rm -rf node_modules
 	rm -rf electron/node_modules
-	yarn install && yarn run build && yarn run copy
+	yarn install
+	yarn run build
+	yarn run copy-electron
 	cd electron && yarn install
-	npx cap sync @capacitor-community/electron || echo ""
-	npx cap sync @capacitor-community/electron || echo ""
+	yarn run sync-electron
 	cd electron && yarn run electron:build-mac
 
 launch-linux-app:
 	rm -rf node_modules
 	rm -rf electron/node_modules
-	yarn install && yarn run build && yarn run copy
+	yarn install
+	yarn run build
+	yarn run copy-electron
 	cd electron && yarn install
-	npx cap sync @capacitor-community/electron || echo ""
-	npx cap sync @capacitor-community/electron || echo ""
+	yarn run sync-electron
 	cd electron && yarn run electron:start
 
 build-linux-installer:
 	rm -rf node_modules
 	rm -rf electron/node_modules
-	yarn install && yarn run build && yarn run copy
+	yarn install
+	yarn run build
+	yarn run copy-electron
 	cd electron && yarn install
-	npx cap sync @capacitor-community/electron || echo ""
-	npx cap sync @capacitor-community/electron || echo ""
+	yarn run sync-electron
 	cd electron && yarn run electron:build-linux
 
 console: start

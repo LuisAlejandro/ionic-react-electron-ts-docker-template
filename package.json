@@ -9,7 +9,10 @@
     "serve-local-api": "cross-env REACT_APP_API_URL=${API_LOCAL_URL} react-scripts start",
     "build": "cross-env REACT_APP_API_URL=${API_REMOTE_URL} react-scripts build",
     "lint": "eslint src/**/*.ts src/**/*.tsx",
-    "copy": "cap copy"
+    "copy-electron": "cap copy @capacitor-community/electron",
+    "sync-electron": "cap sync @capacitor-community/electron",
+    "copy-android": "cap copy android",
+    "sync-android": "cap sync android"
   },
   "homepage": "./",
   "browserslist": {
