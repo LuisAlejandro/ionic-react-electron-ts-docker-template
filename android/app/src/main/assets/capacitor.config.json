@@ -1,0 +1,15 @@
+{
+	"appId": "app.ionic-app.ionic-app",
+	"appName": "ionic-app",
+	"webDir": "build",
+	"bundledWebRuntime": false,
+	"electron": {
+		"customUrlScheme": "capacitor-electron",
+		"trayIconAndMenuEnabled": false,
+		"splashScreenEnabled": true,
+		"splashScreenImageName": "splash.png",
+		"hideMainWindowOnLaunch": false,
+		"deepLinkingEnabled": true,
+		"deepLinkingCustomProtocol": "ionic-app"
+	}
+}
