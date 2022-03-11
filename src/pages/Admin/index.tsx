@@ -107,8 +107,6 @@ const Admin: React.FC<InferMappedProps> = ({ eProps, ...props}: InferMappedProps
     if (userData && userData.email && userData.token) {
       if (type == 'users') {
         getRoles(userData.email, userData.token);
-      }
-      if (type != 'organizations') {
         getOrganizations(userData.email, userData.token);
       }
     };

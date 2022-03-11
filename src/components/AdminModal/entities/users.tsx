@@ -10,8 +10,8 @@ import {
   IonButton,
   IonLabel,
 } from '@ionic/react';
+import _ from 'lodash';
 import { Method } from 'axios';
-import lodashGet from 'lodash/get';
 import { Control, Controller } from 'react-hook-form';
 import Collapse from '@mui/material/Collapse';
 import FormControl from '@mui/material/FormControl';
@@ -38,7 +38,6 @@ import {
   AdminRoleType
 } from 'src/pages/Admin/types';
 import AvatarImg from 'src/assets/images/png/avatar.png';
-import SelectScrollbars from 'src/components/SelectScrollbars';
 
 
 type SubState = {
@@ -88,13 +87,13 @@ export const UsersAdminModalContent = (props: SubState) => {
                   <>
                     <IonRow>
                       <FormControl component="fieldset"  variant="outlined"
-                                   error={Boolean(lodashGet(error, 'message', false))}
+                                   error={Boolean(_.get(error, 'message', false))}
                                    classes={{
-                                     root: Boolean(lodashGet(error, 'message', false)) ?
+                                     root: Boolean(_.get(error, 'message', false)) ?
                                              formControlFieldsetStyle.classes.rootWithErrors :
                                              formControlFieldsetStyle.classes.root
                                    }}>
-                        <FormLabel component="legend" error={Boolean(lodashGet(error, 'message', false))}
+                        <FormLabel component="legend" error={Boolean(_.get(error, 'message', false))}
                                    classes={{ root: formControlFieldsetLabelStyle.classes.root }}>
                           Avatar
                         </FormLabel>
@@ -102,9 +101,9 @@ export const UsersAdminModalContent = (props: SubState) => {
                           <IonImg src={value != '' ? value : AvatarImg} />
                         </IonThumbnail>
                       </FormControl>
-                      <FormHelperText error={Boolean(lodashGet(error, 'message', false))}
+                      <FormHelperText error={Boolean(_.get(error, 'message', false))}
                                       classes={{ root: formHelperTextStyle.classes.root }}>
-                        {lodashGet(error, 'message', '')}
+                        {_.get(error, 'message', '')}
                       </FormHelperText>
                     </IonRow>
                     <IonRow style={{ height: '5px' }}>
@@ -147,7 +146,7 @@ export const UsersAdminModalContent = (props: SubState) => {
                                          type: file.type,
                                          filename: file.name,
                                          content: event.target.result,
-                                         bucketname: 'avatarusersoleit',
+                                         bucketname: 'avataruserionic-app',
                                        }
                                      }
                                    }).catch((err) => {
@@ -197,8 +196,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                           onChange={onChange}
                           inputRef={ref}
                           label="Nombre"
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')} />
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')} />
                       )}
                     />
                   </FormControl>
@@ -221,8 +220,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                           onChange={onChange}
                           inputRef={ref}
                           label="Apellido"
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')} />
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')} />
                       )}
                     />
                   </FormControl>
@@ -237,13 +236,13 @@ export const UsersAdminModalContent = (props: SubState) => {
                     }) => (
                       <>
                         <FormControl component="fieldset"  variant="outlined"
-                                     error={Boolean(lodashGet(error, 'message', false))}
+                                     error={Boolean(_.get(error, 'message', false))}
                                      classes={{
-                                       root: Boolean(lodashGet(error, 'message', false)) ?
+                                       root: Boolean(_.get(error, 'message', false)) ?
                                                formControlFieldsetStyle.classes.rootWithErrors :
                                                formControlFieldsetStyle.classes.root
                                      }}>
-                          <FormLabel component="legend" error={Boolean(lodashGet(error, 'message', false))}
+                          <FormLabel component="legend" error={Boolean(_.get(error, 'message', false))}
                                     classes={{ root: formControlFieldsetLabelStyle.classes.root }}>
                             Tipo de identificación
                           </FormLabel>
@@ -255,9 +254,9 @@ export const UsersAdminModalContent = (props: SubState) => {
                             <FormControlLabel value="passport" label="Pasaporte" control={<Radio />} />
                           </RadioGroup>
                         </FormControl>
-                        <FormHelperText error={Boolean(lodashGet(error, 'message', false))}
+                        <FormHelperText error={Boolean(_.get(error, 'message', false))}
                                         classes={{ root: formHelperTextStyle.classes.root }}>
-                          {lodashGet(error, 'message', '')}
+                          {_.get(error, 'message', '')}
                         </FormHelperText>
                       </>
                     )}
@@ -280,8 +279,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                           value={value}
                           onChange={onChange}
                           inputRef={ref}
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')}
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')}
                         />
                       )}
                     />
@@ -305,8 +304,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                           onChange={onChange}
                           inputRef={ref}
                           label="Teléfono"
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')}
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')}
                         />
                       )}
                     />
@@ -330,8 +329,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                           onChange={onChange}
                           inputRef={ref}
                           label="Email"
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')} />
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')} />
                       )}
                     />
                   </FormControl>
@@ -356,8 +355,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                               onChange={onChange}
                               inputRef={ref}
                               label="Contraseña"
-                              error={Boolean(lodashGet(error, 'message', false))}
-                              helperText={lodashGet(error, 'message', '')} />
+                              error={Boolean(_.get(error, 'message', false))}
+                              helperText={_.get(error, 'message', '')} />
                           )}
                         />
                       </FormControl>
@@ -380,8 +379,8 @@ export const UsersAdminModalContent = (props: SubState) => {
                               onChange={onChange}
                               inputRef={ref}
                               label="Repetir Contraseña"
-                              error={Boolean(lodashGet(error, 'message', false))}
-                              helperText={lodashGet(error, 'message', '')} />
+                              error={Boolean(_.get(error, 'message', false))}
+                              helperText={_.get(error, 'message', '')} />
                           )}
                         />
                       </FormControl>
@@ -410,14 +409,13 @@ export const UsersAdminModalContent = (props: SubState) => {
                           SelectProps={{
                             MenuProps: {
                               classes: {
-                                paper: Boolean(lodashGet(error, 'message', false)) ?
+                                paper: Boolean(_.get(error, 'message', false)) ?
                                         outlinedSelectTextFieldStyle.classes.paperWithErrors :
                                         outlinedSelectTextFieldStyle.classes.paper
                               },
                               PaperProps: {
                                 square: true,
                                 variant: 'outlined',
-                                // component: SelectScrollbars as any,
                               },
                               TransitionComponent: Collapse,
                               transitionDuration: 100,
@@ -429,15 +427,15 @@ export const UsersAdminModalContent = (props: SubState) => {
                                 vertical: 'top',
                                 horizontal: 'left'
                               },
-                              elevation: 4,
+                              elevation: 0,
                               marginThreshold: -50,
                               autoFocus: false,
                               anchorReference: 'anchorEl',
                               // getContentAnchorEl: null,
                             }
                           }}
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')}>
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')}>
                           <MenuItem value="M">Masculino</MenuItem>
                           <MenuItem value="F">Femenino</MenuItem>
                         </TextField>
@@ -467,14 +465,13 @@ export const UsersAdminModalContent = (props: SubState) => {
                           SelectProps={{
                             MenuProps: {
                               classes: {
-                                paper: Boolean(lodashGet(error, 'message', false)) ?
+                                paper: Boolean(_.get(error, 'message', false)) ?
                                           outlinedSelectTextFieldStyle.classes.paperWithErrors :
                                           outlinedSelectTextFieldStyle.classes.paper
                               },
                               PaperProps: {
                                 square: true,
                                 variant: 'outlined',
-                                // component: SelectScrollbars as any,
                               },
                               TransitionComponent: Collapse,
                               transitionDuration: 100,
@@ -486,15 +483,15 @@ export const UsersAdminModalContent = (props: SubState) => {
                                 vertical: 'top',
                                 horizontal: 'left'
                               },
-                              elevation: 4,
+                              elevation: 0,
                               marginThreshold: -50,
                               autoFocus: false,
                               anchorReference: 'anchorEl',
                               // getContentAnchorEl: null,
                             }
                           }}
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')}>
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')}>
                         {rolesList.map((role: AdminRoleType, idx: number) => role.name == 'SuperAdmin' || (
                           <MenuItem key={idx} value={role.id}>
                             {role.name}
@@ -517,7 +514,7 @@ export const UsersAdminModalContent = (props: SubState) => {
                         <TextField
                           select
                           fullWidth
-                          disabled={userDataInitialValues.orgName != 'Soleit'}
+                          disabled={userDataInitialValues.role != 'Superadmin'}
                           autoComplete="off"
                           type="text"
                           label="Organización"
@@ -528,14 +525,13 @@ export const UsersAdminModalContent = (props: SubState) => {
                           SelectProps={{
                             MenuProps: {
                               classes: {
-                                paper: Boolean(lodashGet(error, 'message', false)) ?
+                                paper: Boolean(_.get(error, 'message', false)) ?
                                           outlinedSelectTextFieldStyle.classes.paperWithErrors :
                                           outlinedSelectTextFieldStyle.classes.paper
                               },
                               PaperProps: {
                                 square: true,
                                 variant: 'outlined',
-                                // component: SelectScrollbars as any,
                               },
                               TransitionComponent: Collapse,
                               transitionDuration: 100,
@@ -547,15 +543,15 @@ export const UsersAdminModalContent = (props: SubState) => {
                                 vertical: 'top',
                                 horizontal: 'left'
                               },
-                              elevation: 4,
+                              elevation: 0,
                               marginThreshold: -50,
                               autoFocus: false,
                               anchorReference: 'anchorEl',
                               // getContentAnchorEl: null,
                             }
                           }}
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')}>
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')}>
                         {organizationsList.map((organization: AdminOrganizationType, idx: number) => (
                           <MenuItem key={idx} value={organization.id}>
                             {organization.name}

@@ -11,12 +11,9 @@ const roleDetailsSchema = yup
       .required()
       .oneOf([
         'Admin',
-        'Evaluador',
-        'Diseñador',
-        'Fabricante',
-        'Médico',
-        'Paciente',
-        'Visita',
+        'Superadmin',
+        'Visitor',
+        'User',
       ])
       .label('Nombre')
       .default(''),

@@ -3,8 +3,8 @@ import { CapacitorElectronConfig } from '@capacitor-community/electron';
 
 
 const config: CapacitorConfig & { electron: CapacitorElectronConfig } = {
-  appId: 'app.soleit.soleit',
-  appName: 'soleit',
+  appId: 'app.ionic-app.ionic-app',
+  appName: 'ionic-app',
   webDir: 'build',
   bundledWebRuntime: false,
   electron: {
@@ -21,7 +21,7 @@ const config: CapacitorConfig & { electron: CapacitorElectronConfig } = {
     // Switch on/off whether or not to use deeplinking in your app.
     deepLinkingEnabled: true,
     // Custom protocol to be used with deeplinking for your app.
-    deepLinkingCustomProtocol: 'soleit',
+    deepLinkingCustomProtocol: 'ionic-app',
   }
 };
 

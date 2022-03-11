@@ -45,7 +45,7 @@ setupIonicReact({
   mode: 'md'
 });
 
-const SoleitApp: React.FC = () => {
+const IonicApp: React.FC = () => {
   
   const muiCache = createCache({
     'key': 'mui',
@@ -56,7 +56,7 @@ const SoleitApp: React.FC = () => {
     if (!Boolean(process.env.REACT_APP_API_URL)) {
       const ipcRenderer: IpcRenderer = window.require('electron').ipcRenderer;
       ipcRenderer.on('appUrlOpen', (event: any, args: any) => {
-        const slug = args.replace('soleit://', '');
+        const slug = args.replace('ionic-app://', '');
         if (slug) {
           location.href = slug;
         }
@@ -86,4 +86,4 @@ const SoleitApp: React.FC = () => {
   );
 };
 
-export default SoleitApp;
+export default IonicApp;

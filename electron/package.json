@@ -1,5 +1,5 @@
 {
-  "name": "soleit",
+  "name": "ionic-app",
   "version": "1.0.0",
   "description": "An Ionic React project",
   "main": "./build/src/index.js",
@@ -30,8 +30,8 @@
   "author": "",
   "license": "MIT",
   "build": {
-    "appId": "app.soleit.soleit",
-    "productName": "Soleit",
+    "appId": "app.ionic-app.ionic-app",
+    "productName": "Ionic App",
     "asar": false,
     "files": [
       "app/**",
@@ -50,9 +50,9 @@
       "icon": "assets/icon.ico"
     },
     "protocols": {
-      "name": "soleit-protocol",
+      "name": "ionic-app-protocol",
       "schemes": [
-        "soleit"
+        "ionic-app"
       ]
     }
   }

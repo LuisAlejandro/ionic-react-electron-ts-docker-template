@@ -38,7 +38,7 @@ export const Constants = {
   PermissionsModelExcludes: [
   ] as const,
   RolesModelExcludes: [
-    'users', 'permissions',
+    'users',
   ] as const,
 }
 /** Component Constants - END */

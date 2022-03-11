@@ -140,18 +140,6 @@ const phoneSchema = yup
   .label('Número telefónico')
   .default('');
 
-const catalogSchema = yup
-  .string()
-  .required()
-  .min(1)
-  .max(64)
-  .default('');
-
-const sizeSchema = yup
-  .number()
-  .required()
-  .default(0);
-
 const urlSchema = yup
   .string()
   .required()
@@ -165,73 +153,6 @@ const passwordSchema = yup
   .max(30)
   .default('');
 
-const fileuploadSchema = yup
-  .object({
-    type: yup
-      .string()
-      .required()
-      .min(1)
-      .max(128)
-      .default(''),
-    filename: yup
-      .string()
-      .required()
-      .min(1)
-      .max(128)
-      .default(''),
-    content: yup
-      .string()
-      .required()
-      .min(1)
-      .default(''),
-    bucketname: yup
-      .string()
-      .required()
-      .oneOf([
-        'avatarusersoleit',
-        'alineacionessoleit',
-        'medicalorders',
-        'orgslogos'
-      ])
-      .default(''),
-  });
-
-const fileremoveSchema = yup
-  .object({
-    filename: yup
-      .string()
-      .required()
-      .min(1)
-      .max(128)
-      .default(''),
-    bucketname: yup
-      .string()
-      .required()
-      .oneOf([
-        'avatarusersoleit',
-        'alineacionessoleit',
-        'medicalorders',
-        'orgslogos'
-      ])
-      .default(''),
-  });
-
-const catalogshapeSchema = yup
-  .object({
-    top: yup
-      .string()
-      .required()
-      .oneOf([
-        'rounded',
-        'sharp',
-        'square'
-      ])
-      .default(''),
-    length: sizeSchema,
-    metatarsusWidth: sizeSchema,
-    heelWidth: sizeSchema,
-  });
-
 
 export {
   lastNameSchema,
@@ -243,13 +164,8 @@ export {
   idTypeSchema,
   idNumberSchema,
   phoneSchema,
-  catalogSchema,
-  sizeSchema,
   urlSchema,
   passwordSchema,
-  fileuploadSchema,
-  fileremoveSchema,
-  catalogshapeSchema,
   stringDateSchema,
   nullableIdSchema,
   requiredIdSchema

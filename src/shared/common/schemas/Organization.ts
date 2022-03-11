@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { idSchema, stringDateSchema } from './misc';
+import { idSchema, stringDateSchema, urlSchema } from './misc';
 
 
 const organizationDetailsSchema = yup
@@ -17,15 +17,15 @@ const organizationDetailsSchema = yup
       .string()
       .required()
       .oneOf([
-        'adquisición',
-        'fabricación'
-      ], '"Tipo de organización" debe ser uno de los siguientes valores: Adquisición, Fabricación')
+        'A',
+        'B',
+        'C',
+        'D',
+      ], '"Tipo de organización" debe ser uno de los siguientes valores: A, B, C, D')
       .label('Tipo de Organización')
       .default(''),
-    logo: yup
-      .string()
+    logo: urlSchema
       .optional()
-      .url()
       .label('Logo')
       .default(''),
     createdAt: stringDateSchema,

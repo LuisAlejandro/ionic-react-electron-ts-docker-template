@@ -1,5 +1,4 @@
 import { join } from 'path';
-import { spawn, exec } from 'child_process';
 import {
   app,
   BrowserWindow,
@@ -34,7 +33,7 @@ const DeepLinkingConfig = {
   customProtocol: CapacitorFileConfig.deepLinkingCustomProtocol ?? 'mycapacitorapp',
 };
 
-class SoleitApp {
+class IonicApp {
   private MainWindow: BrowserWindow | null = null;
   private SplashScreen: CapacitorSplashScreen | null = null;
   private TrayIcon: Tray | null = null;
@@ -145,17 +144,17 @@ class SoleitApp {
   }
 }
 
-const soleitApp = new SoleitApp();
+const ionicApp = new IonicApp();
 
 if (CapacitorFileConfig.deepLinkingEnabled) {
-  setupElectronDeepLinking(soleitApp, DeepLinkingConfig);
+  setupElectronDeepLinking(ionicApp, DeepLinkingConfig);
 }
 
 // Run Application
 (async () => {
 
   await app.whenReady();
-  await soleitApp.init();
+  await ionicApp.init();
 
   app.on('window-all-closed', function () {
     app.quit();
@@ -164,8 +163,8 @@ if (CapacitorFileConfig.deepLinkingEnabled) {
   app.on('activate', async function () {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (soleitApp.getMainWindow().isDestroyed()) { 
-      await soleitApp.init();
+    if (ionicApp.getMainWindow().isDestroyed()) { 
+      await ionicApp.init();
     }
   });
 

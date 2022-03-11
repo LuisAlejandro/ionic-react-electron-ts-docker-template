@@ -114,7 +114,7 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
         fontFamily: 'var(--ion-font-family)',
         fontWeight: 400,
         fontSize: '10px !important',
-        '&$error': {
+        '&.Mui-error': {
           fontFamily: 'var(--ion-font-family)',
           fontWeight: 400,
           fontSize: '10px !important',
@@ -133,10 +133,10 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
         fontWeight: 400,
         fontSize: '12px',
         color: 'var(--ion-color-gray50)',
-        '&$focused': {
+        '&.Mui-focused': {
           color: 'var(--ion-color-primary)',
         },
-        '&$error': {
+        '&.Mui-error': {
           color: 'var(--ion-color-danger30)',
         },
       },
@@ -152,111 +152,15 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
         border: '1px solid var(--ion-color-primary)',
       }
     },
-    // MuiPickersBasePicker: {
-    //   pickerView: {
-    //     maxWidth: '200px',
-    //     minWidth: '200px',
-    //     minHeight: '230px',
-    //   }
-    // },
-    // MuiPickersCalendar: {
-    //   transitionContainer: {
-    //     minHeight: '144px',
-    //   },
-    // },
-    // MuiPickersCalendarHeader: {
-    //   transitionContainer: {
-    //     '& > *': {
-    //       fontFamily: 'var(--ion-font-family)',
-    //       fontWeight: 600,
-    //       fontSize: '10px',
-    //     }
-    //   },
-    //   dayLabel: {
-    //     fontFamily: 'var(--ion-font-family)',
-    //     fontWeight: 400,
-    //     fontSize: '10px',
-    //     margin: 0,
-    //     width: '27px',
-    //   },
-    //   switchHeader: {
-    //     marginTop: '0px',
-    //     marginBottom: '0px',
-    //   }
-    // },
-    // MuiPickersDay: {
-    //   current: {
-    //     backgroundColor: 'var(--ion-color-gray7)',
-    //   },
-    //   day: {
-    //     margin: '2px',
-    //     borderRadius: '4px',
-    //     width: '23px',
-    //     height: '16px',
-    //     '& > span': {
-    //       '& > p': {
-    //         fontFamily: 'var(--ion-font-family)',
-    //         fontWeight: 400,
-    //         fontSize: '10px',
-    //       }
-    //     }
-    //   },
-    //   daySelected: {
-    //     backgroundColor: 'var(--ion-color-primary)',
-    //     '&:hover': {
-    //       backgroundColor: 'rgba(var(--ion-color-primary-rgb), 0.6)',
-    //     }
-    //   },
-    //   dayDisabled: {
-    //   },
-    // },
-    // MuiPickersYearSelection: {
-    //   container: {
-    //     maxHeight: '230px',
-    //   },
-    // },
-    // MuiPickersYear:{
-    //   root: {
-    //     fontFamily: 'var(--ion-font-family)',
-    //     fontWeight: 400,
-    //     '&:focus': {
-    //       color: 'var(--ion-color-primary)',
-    //     }
-    //   },
-    //   yearSelected: {
-    //     color: 'var(--ion-color-primary)',
-    //   }
-    // },
-    // MuiPickersMonthSelection: {
-    //   container: {
-    //     maxHeight: '230px',
-    //     width: '210px'
-    //   },
-    // },
-    // MuiPickersMonth:{
-    //   root: {
-    //     fontFamily: 'var(--ion-font-family)',
-    //     fontWeight: 400,
-    //     height: '50px',
-    //     '&:focus': {
-    //       color: 'var(--ion-color-primary)',
-    //     }
-    //   },
-    //   monthSelected: {
-    //     color: 'var(--ion-color-primary)',
-    //   }
-    // },
     MuiSelect: {
       select: {
+        height: '13px',
+        minHeight: '13px',
+        lineHeight: '13px',
         '&:focus': {
           backgroundColor: 'transparent',
         },
       },
-      // selectMenu: {
-      //   height: '13px',
-      //   minHeight: '13px',
-      //   lineHeight: '13px'
-      // },
       icon: {
         width: '25px',
         height: '25px',
@@ -296,7 +200,7 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
     },
     MuiListItem: {
       root: {
-        '&$selected': {
+        '&.Mui-selected': {
           '&:hover': {
             color: 'var(--ion-color-black) !important',
             backgroundColor: 'rgba(var(--ion-color-primary-rgb), 0.6) !important',
@@ -304,7 +208,7 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
           color: 'var(--ion-color-black)',
           backgroundColor: 'rgba(var(--ion-color-primary-rgb), 0.6)',
         },
-        '&$focusVisible': {
+        '&.Mui-focusVisible': {
           color: 'var(--ion-color-gray60)',
           backgroundColor: 'rgba(var(--ion-color-primary-rgb), 0.15)',
         },
@@ -319,7 +223,7 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
     MuiAccordionSummary: {
       content: {
         margin: '10px 0',
-        '&$expanded': {
+        '&.Mui-expanded': {
           margin: '10px 0',
         },
       },
@@ -353,7 +257,7 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
         fill: '#fff',
         stroke: 'var(--ion-color-gray7)',
         strokeWidth: '1px',
-        '&$active': {
+        '&.Mui-active': {
           fill: 'var(--ion-color-primary)',
           color: 'var(--ion-color-primary)',
           strokeWidth: '0px',
@@ -361,7 +265,7 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
             fill: '#fff',
           },
         },
-        '&$completed': {
+        '&.Mui-completed': {
           fill: 'var(--ion-color-success)',
           color: 'var(--ion-color-success)',
           strokeWidth: '0px',
@@ -388,11 +292,11 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
         '&$alternativeLabel': {
           marginTop: 5,
         },
-        '&$active': {
+        '&.Mui-active': {
           color: 'var(--ion-color-primary)',
           fontWeight: 400,
         },
-        '&$completed': {
+        '&.Mui-completed': {
           color: 'var(--ion-color-gray30)',
           fontWeight: 400,
         },
@@ -407,21 +311,21 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
     MuiOutlinedInput: {
       root: {
         borderWidth: '1px',
-        '& $notchedOutline': {
+        '& .MuiOutlinedInput-notchedOutline': {
           borderColor: 'var(--ion-color-gray30)',
           borderWidth: '1px',
         },
-        '&:hover $notchedOutline': {
+        '&:hover .MuiOutlinedInput-notchedOutline': {
           borderColor: 'var(--ion-color-gray70)',
         },
-        '&$focused $notchedOutline': {
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
           borderColor: 'var(--ion-color-primary)',
           borderWidth: '1px',
         },
-        '&$error $notchedOutline': {
+        '&.Mui-error .MuiOutlinedInput-notchedOutline': {
           borderColor: 'var(--ion-color-danger30)',
         },
-        '&$error:hover $notchedOutline': {
+        '&.Mui-error:hover .MuiOutlinedInput-notchedOutline': {
           borderColor: 'var(--ion-color-danger)',
         },
       },
@@ -443,12 +347,12 @@ export const adminModalThemeConfig: DeprecatedThemeOptions = {
         '&$marginDense': {
           transform: 'translate(14px, 15px) scale(1)',
         },
-        '&$shrink': {
+        '&.MuiInputLabel-shrink': {
           color: 'var(--ion-color-gray30)',
           transform: 'translate(14px, -6px) scale(0.9)',
-          '&$focused': {
+          '&.Mui-focused': {
             color: 'var(--ion-color-primary)',
-            '&$error': {
+            '&.Mui-error': {
               color: 'var(--ion-color-danger)',
             },
           },
@@ -491,19 +395,19 @@ export const loginFormThemeConfig: DeprecatedThemeOptions = {
         fontWeight: 400,
         fontSize: '12px',
         color: 'var(--ion-color-gray50)',
-        '&$focused': {
+        '&.Mui-focused': {
           color: 'var(--ion-color-primary)',
         }
       },
     },
     MuiOutlinedInput: {
       root: {
-        '&$focused': {
+        '&.Mui-focused': {
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: 'var(--ion-color-primary)',
           }
         },
-        '&$error': {
+        '&.Mui-error': {
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: '#f44336 !important',
           }
@@ -516,7 +420,7 @@ export const loginFormThemeConfig: DeprecatedThemeOptions = {
     MuiInputLabel: {
       outlined: {
         transform: 'translate(14px, 12px) scale(1)',
-        '&$shrink': {
+        '&.MuiInputLabel-shrink': {
           transform: 'translate(14px, -6px) scale(0.9)',
         }
       },
@@ -538,7 +442,7 @@ export const loginFormThemeConfig: DeprecatedThemeOptions = {
         fontFamily: 'var(--ion-font-family)',
         fontWeight: 400,
         fontSize: '10px !important',
-        '&$error': {
+        '&.Mui-error': {
           fontFamily: 'var(--ion-font-family)',
           fontWeight: 400,
           fontSize: '10px !important',

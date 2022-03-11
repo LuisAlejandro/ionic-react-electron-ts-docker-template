@@ -15,12 +15,13 @@ import {
   IonLabel,
 } from '@ionic/react';
 import {
-  peopleCircleSharp,
-  personSharp,
-  cubeSharp,
   closeSharp,
   saveSharp,
   checkmarkSharp,
+  businessOutline,
+  ribbonOutline,
+  keyOutline,
+  peopleOutline,
 } from 'ionicons/icons';
 import {
   useForm,
@@ -106,25 +107,25 @@ const AdminModal = (props: SubState) => {
     initialValues: AdminEntityType,
   } = type == 'organizations' ? {
     title: 'Organizaciones',
-    icon: peopleCircleSharp,
+    icon: businessOutline,
     ModalContent: OrganizationsAdminModalContent,
     schema: adminOrganizationSchema,
     initialValues: adminOrganizationInitialValues as AdminOrganizationType,
   } : type == 'roles' ? {
     title: 'Roles',
-    icon: cubeSharp,
+    icon: ribbonOutline,
     ModalContent: RolesAdminModalContent,
     schema: adminRoleSchema,
     initialValues: adminRoleInitialValues as AdminRoleType,
   } : type == 'permissions' ? {
     title: 'Permisos',
-    icon: cubeSharp,
+    icon: keyOutline,
     ModalContent: PermissionsAdminModalContent,
     schema: adminPermissionSchema,
     initialValues: adminPermissionInitialValues as AdminPermissionType,
   } : {
     title: 'Usuarios',
-    icon: personSharp,
+    icon: peopleOutline,
     ModalContent: UsersAdminModalContent,
     schema: isCreate ?
       adminUpdateUserSchema : adminCreateUserSchema,
@@ -133,7 +134,7 @@ const AdminModal = (props: SubState) => {
       adminCreateUserInitialValues as AdminCreateUserType,
   };
 
-  if (userDataInitialValues.orgName != 'Soleit') {
+  if (userDataInitialValues.role != 'Superadmin') {
     if ('organizationId' in initialValues) {
       initialValues.organizationId = userDataInitialValues.orgId;
     }

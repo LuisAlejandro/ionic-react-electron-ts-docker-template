@@ -10,8 +10,8 @@ import {
   IonButton,
   IonLabel,
 } from '@ionic/react';
+import _ from 'lodash';
 import { Method } from 'axios';
-import lodashGet from 'lodash/get';
 import { Control, Controller } from 'react-hook-form';
 import Collapse from '@mui/material/Collapse';
 import FormControl from '@mui/material/FormControl';
@@ -31,7 +31,6 @@ import { authHeader } from 'src/shared/common/helpers';
 import { userDataInitialValues } from 'src/shared/common/values';
 import { AdminOrganizationType } from 'src/pages/Admin/types';
 import OrgLogo from 'src/assets/images/png/orglogo.png';
-import SelectScrollbars from 'src/components/SelectScrollbars';
 
 
 type SubState = {
@@ -70,13 +69,13 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                   <>
                     <IonRow>
                       <FormControl component="fieldset"  variant="outlined"
-                                   error={Boolean(lodashGet(error, 'message', false))}
+                                   error={Boolean(_.get(error, 'message', false))}
                                    classes={{
-                                     root: Boolean(lodashGet(error, 'message', false)) ?
+                                     root: Boolean(_.get(error, 'message', false)) ?
                                              formControlFieldsetStyle.classes.rootWithErrors :
                                              formControlFieldsetStyle.classes.root
                                    }}>
-                        <FormLabel component="legend" error={Boolean(lodashGet(error, 'message', false))}
+                        <FormLabel component="legend" error={Boolean(_.get(error, 'message', false))}
                                    classes={{ root: formControlFieldsetLabelStyle.classes.root }}>
                           Logo
                         </FormLabel>
@@ -84,9 +83,9 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                           <IonImg src={value != '' ? value : OrgLogo} />
                         </IonThumbnail>
                       </FormControl>
-                      <FormHelperText error={Boolean(lodashGet(error, 'message', false))}
+                      <FormHelperText error={Boolean(_.get(error, 'message', false))}
                                       classes={{ root: formHelperTextStyle.classes.root }}>
-                        {lodashGet(error, 'message', '')}
+                        {_.get(error, 'message', '')}
                       </FormHelperText>
                     </IonRow>
                     <IonRow style={{ height: '5px' }}>
@@ -179,8 +178,8 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                           onChange={onChange}
                           inputRef={ref}
                           label="Organización"
-                          error={Boolean(lodashGet(error, 'message', false))}
-                          helperText={lodashGet(error, 'message', '')} />
+                          error={Boolean(_.get(error, 'message', false))}
+                          helperText={_.get(error, 'message', '')} />
                       )}
                     />
                   </FormControl>
@@ -208,14 +207,13 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                         SelectProps={{
                           MenuProps: {
                             classes: {
-                              paper: Boolean(lodashGet(error, 'message', false)) ?
+                              paper: Boolean(_.get(error, 'message', false)) ?
                                       outlinedSelectTextFieldStyle.classes.paperWithErrors :
                                       outlinedSelectTextFieldStyle.classes.paper
                             },
                             PaperProps: {
                               square: true,
                               variant: 'outlined',
-                              // component: SelectScrollbars as any,
                             },
                             TransitionComponent: Collapse,
                             transitionDuration: 100,
@@ -227,17 +225,19 @@ export const OrganizationsAdminModalContent = (props: SubState) => {
                               vertical: 'top',
                               horizontal: 'left'
                             },
-                            elevation: 4,
+                            elevation: 0,
                             marginThreshold: -50,
                             autoFocus: false,
                             anchorReference: 'anchorEl',
                             // getContentAnchorEl: null,
                           }
                         }}
-                        error={Boolean(lodashGet(error, 'message', false))}
-                        helperText={lodashGet(error, 'message', '')}>
-                        <MenuItem value="adquisición">Adquisición</MenuItem>
-                        <MenuItem value="fabricación">Fabricación</MenuItem>
+                        error={Boolean(_.get(error, 'message', false))}
+                        helperText={_.get(error, 'message', '')}>
+                        <MenuItem value="A">A</MenuItem>
+                        <MenuItem value="B">B</MenuItem>
+                        <MenuItem value="C">C</MenuItem>
+                        <MenuItem value="D">D</MenuItem>
                       </TextField>
                     )}
                   />

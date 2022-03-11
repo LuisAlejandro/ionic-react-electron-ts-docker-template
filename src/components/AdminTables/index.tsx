@@ -22,12 +22,16 @@ import {
   AdminCreateUserType,
   AdminEntityType,
   AdminOrganizationType,
+  AdminRoleType,
+  AdminPermissionType
 } from 'src/pages/Admin/types';
 import { makeSearchStyles } from 'src/shared/common/styles';
 import { adminTableTheme } from 'src/shared/common/themes';
 
 import { default as organizationsColumns } from './columns/organizations';
 import { default as usersColumns } from './columns/users';
+import { default as rolesColumns } from './columns/roles';
+import { default as permissionsColumns } from './columns/permissions';
 
 import style from './style.module.scss';
 
@@ -107,6 +111,12 @@ const AdminTables = (props: SubState) => {
   } = type == 'organizations' ? {
     title: 'organizaciones',
     columns: organizationsColumns({ data: data as AdminOrganizationType[], showModal, deleteEntities }),
+  } : type == 'roles' ? {
+    title: 'roles',
+    columns: rolesColumns({ data: data as AdminRoleType[], showModal, deleteEntities }),
+  } : type == 'permissions' ? {
+    title: 'permisos',
+    columns: permissionsColumns({ data: data as AdminPermissionType[], showModal, deleteEntities }),
   } : {
     title: 'usuarios',
     columns: usersColumns({ data: data as AdminCreateUserType[], showModal, deleteEntities }),

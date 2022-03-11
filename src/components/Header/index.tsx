@@ -12,7 +12,6 @@ import {
   IonListHeader,
   IonPopover,
   IonLabel,
-  IonContent
 } from '@ionic/react';
 import {
   logOutOutline,
@@ -53,7 +52,6 @@ const Header: React.FC = () => {
   const userLogout = () => {
     userService.logout();
   }
-  console.log(userDataInitialValues.permissions);
   
   return (
     <>
@@ -153,7 +151,7 @@ const Header: React.FC = () => {
                              e.persist();
                              setNotificationsMenuState({ showNotificationsMenu: true, event: e.nativeEvent })
                            }}>
-                  <IonIcon size="small" icon={alertCircleSharp} />
+                  <IonIcon size="small" color="gray30" icon={alertCircleSharp} />
                 </IonButton>
                 <IonButton className={style['user-menu-avatar']}
                            onClick={(e: MouseEvent<HTMLIonButtonElement>) => {

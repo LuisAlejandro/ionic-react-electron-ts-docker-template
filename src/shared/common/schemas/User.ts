@@ -12,7 +12,8 @@ import {
   firstNameSchema,
   tokenSchema,
   idSchema,
-  stringDateSchema
+  stringDateSchema,
+  urlSchema
 } from './misc';
 
 
@@ -23,7 +24,7 @@ const initialUser = JSON.stringify({
 });
 const localUser = localStorage.getItem('user');
 const user = JSON.parse(localUser || initialUser) as UserDataType;
-console.log(user);
+
 const userDetailsSchema = yup
   .object({
     id: idSchema,
@@ -34,10 +35,8 @@ const userDetailsSchema = yup
     phone: phoneSchema,
     gender: genderSchema,
     email: emailSchema,
-    avatar: yup
-      .string()
+    avatar: urlSchema
       .optional()
-      .url()
       .label('Avatar')
       .default(''),
     password: yup
