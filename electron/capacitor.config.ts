@@ -1,3 +1,7 @@
+/// <reference types="@capacitor/local-notifications" />
+/// <reference types="@capacitor/push-notifications" />
+/// <reference types="@capacitor/splash-screen" />
+
 import { CapacitorConfig } from '@capacitor/cli';
 import { CapacitorElectronConfig } from '@capacitor-community/electron';
 

@@ -26,20 +26,6 @@ serve-local-api: start
 launch-windows-app:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "python -m venv .\electron\pywinenv"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command ".\electron\pywinenv\Scripts\pip.exe install -U wheel setuptools pycparser"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command ".\electron\pywinenv\Scripts\pip.exe install -r requirements.txt"
-	C:\Windows\System32\cmd.exe /c \
-		.\electron\pywinenv\Scripts\pyinstaller.exe --onefile --clean --log-level DEBUG --noconfirm --distpath .\pyinstaller\dist --workpath .\pyinstaller\build --specpath .\pyinstaller --hidden-import clr --hidden-import numpy --hidden-import simple_websocket --hidden-import flask --hidden-import flask_cors --hidden-import flask_socketio --collect-submodules translator --paths .\translator\ --add-data "$(BASEDIR)\translator\tekscan;tekscan" .\translator\translator.py
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command "Copy-Item '.\pyinstaller\dist\translator.exe' -Destination '.\electron\'"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
 		-Command "yarn install ; yarn run build ; yarn run copy"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
@@ -57,20 +43,6 @@ launch-windows-app:
 build-windows-installer:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "python -m venv .\electron\pywinenv"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command ".\electron\pywinenv\Scripts\pip.exe install -U wheel setuptools pycparser"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command ".\electron\pywinenv\Scripts\pip.exe install -r requirements.txt"
-	C:\Windows\System32\cmd.exe /c \
-		.\electron\pywinenv\Scripts\pyinstaller.exe --onefile --clean --log-level DEBUG --noconfirm --distpath .\pyinstaller\dist --workpath .\pyinstaller\build --specpath .\pyinstaller --hidden-import clr --hidden-import numpy --hidden-import simple_websocket --hidden-import flask --hidden-import flask_cors --hidden-import flask_socketio --collect-submodules translator --paths .\translator\ --add-data "$(BASEDIR)\translator\tekscan;tekscan" .\translator\translator.py
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
-		-Command "Copy-Item '.\pyinstaller\dist\translator.exe' -Destination '.\electron\'"
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
-		-ExecutionPolicy Bypass \
 		-Command "yarn install ; yarn run build ; yarn run copy"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
@@ -81,6 +53,23 @@ build-windows-installer:
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "npx cap sync @capacitor-community/electron"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "cd electron ; yarn run electron:build-windows"
+
+prepare-apk:
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "yarn install ; yarn run build ; yarn run copy"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "cd electron ; yarn install"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "npx cap sync"
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
+		-ExecutionPolicy Bypass \
+		-Command "npx cap sync"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn run electron:build-windows"
