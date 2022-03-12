@@ -1,7 +1,7 @@
 {
   "appId": "com.ionicapp.ionicapp",
   "productName": "Ionic App",
-  "asar": false,
+  "asar": true,
   "directories": {
     "buildResources": "resources"
   },

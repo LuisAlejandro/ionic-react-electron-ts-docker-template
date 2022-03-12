@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "An Ionic React project",
+  "author": {
+    "name": "Luis Alejandro Martínez Faneyth",
+    "email": "luis@luisalejandro.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:LuisAlejandro/ionic-react-electron-ts-docker-template.git"
+  },
   "scripts": {
     "serve": "cross-env REACT_APP_API_URL=${API_LOCAL_URL} react-scripts start",
     "serve-remote-api": "cross-env REACT_APP_API_URL=${API_REMOTE_URL} react-scripts start",

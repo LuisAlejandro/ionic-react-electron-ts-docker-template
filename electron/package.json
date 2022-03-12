@@ -1,19 +1,20 @@
 {
   "name": "ionic-app",
   "version": "1.0.0",
-  "description": "An Amazing Capacitor App",
+  "private": true,
+  "description": "An Ionic React project",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Luis Alejandro Martínez Faneyth",
+    "email": "luis@luisalejandro.org"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:LuisAlejandro/ionic-react-electron-ts-docker-template.git"
   },
   "license": "MIT",
-  "main": "build/src/index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "tsc && electron-rebuild",
+    "build": "tsc",
     "electron:start-live": "node ./live-runner.js",
     "electron:start": "yarn run build && electron --inspect=5858 ./",
     "electron:pack": "yarn run build && electron-builder build --dir -c ./electron-builder.config.json",
@@ -30,13 +31,11 @@
     "electron-serve": "~1.1.0",
     "electron-unhandled": "~4.0.1",
     "electron-updater": "~4.6.5",
-    "electron-window-state": "~5.0.3",
-    "npm-check-updates": "^12.5.3"
+    "electron-window-state": "~5.0.3"
   },
   "devDependencies": {
     "electron": "^17.1.2",
     "electron-builder": "~22.14.13",
-    "electron-rebuild": "^3.2.7",
     "typescript": "~4.6.2"
   },
   "keywords": [
