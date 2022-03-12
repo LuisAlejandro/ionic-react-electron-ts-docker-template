@@ -6,7 +6,6 @@ import {
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
-import { IpcRenderer } from 'electron';
 import WebFont from 'webfontloader';
 import { CacheProvider } from "@emotion/react";
 import createCache from '@emotion/cache';
@@ -46,28 +45,19 @@ setupIonicReact({
 });
 
 const IonicApp: React.FC = () => {
-  
-  const muiCache = createCache({
-    'key': 'mui',
-    'prepend': true,
-  });
 
   useEffect(() => {
-    if (!Boolean(process.env.REACT_APP_API_URL)) {
-      const ipcRenderer: IpcRenderer = window.require('electron').ipcRenderer;
-      ipcRenderer.on('appUrlOpen', (event: any, args: any) => {
-        const slug = args.replace('ionic-app://', '');
-        if (slug) {
-          location.href = slug;
-        }
-      });
-    }
     WebFont.load({
       google: {
         families: ['Poppins:300,400,500,600,700']
       }
     });
-   }, []);
+  }, []);
+  
+  const muiCache = createCache({
+    'key': 'mui',
+    'prepend': true,
+  });
 
   return (
     <IonApp>
