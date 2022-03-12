@@ -32,7 +32,7 @@ launch-windows-app:
 		-Command "yarn run build"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "yarn run copy-android"
+		-Command "yarn run copy-electron"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn install"
@@ -52,7 +52,7 @@ build-windows-installer:
 		-Command "yarn run build"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
-		-Command "yarn run copy-android"
+		-Command "yarn run copy-electron"
 	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe \
 		-ExecutionPolicy Bypass \
 		-Command "cd electron ; yarn install"

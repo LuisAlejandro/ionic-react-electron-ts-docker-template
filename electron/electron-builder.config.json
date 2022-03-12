@@ -1,0 +1,37 @@
+{
+  "appId": "com.ionicapp.ionicapp",
+  "productName": "Ionic App",
+  "asar": false,
+  "directories": {
+    "buildResources": "resources"
+  },
+  "files": [
+    "assets/**/*",
+    "build/**/*",
+    "capacitor.config.*",
+    "app/**/*"
+  ],
+  "publish": {
+    "provider": "github"
+  },
+  "nsis": {
+    "allowElevation": true,
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  },
+  "win": {
+    "target": "nsis",
+    "icon": "assets/icon.ico"
+  },
+  "mac": {
+    "category": "public.app-category.developer-tools",
+    "target": "dmg",
+    "icon": "assets/icon.png"
+  },
+  "protocols": {
+    "name": "ionic-app-protocol",
+    "schemes": [
+      "ionic-app"
+    ]
+  }
+}

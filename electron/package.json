@@ -1,59 +1,45 @@
 {
   "name": "ionic-app",
   "version": "1.0.0",
-  "description": "An Ionic React project",
-  "main": "./build/src/index.js",
+  "description": "An Amazing Capacitor App",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "main": "build/src/index.js",
   "scripts": {
-    "build": "tsc",
-    "electron:start": "yarn run build && electron ./",
-    "electron:pack": "yarn run build && electron-builder build --dir",
-    "electron:build-windows": "yarn run build && electron-builder build --windows",
-    "electron:build-mac": "yarn run build && electron-builder build --mac",
-    "electron:build-linux": "yarn run build && electron-builder build --linux",
+    "build": "tsc && electron-rebuild",
+    "electron:start-live": "node ./live-runner.js",
+    "electron:start": "yarn run build && electron --inspect=5858 ./",
+    "electron:pack": "yarn run build && electron-builder build --dir -c ./electron-builder.config.json",
+    "electron:make": "yarn run build && electron-builder build -c ./electron-builder.config.json -p always",
+    "electron:build-windows": "yarn run build && electron-builder build -c ./electron-builder.config.json --windows",
+    "electron:build-mac": "yarn run build && electron-builder build -c ./electron-builder.config.json --mac",
+    "electron:build-linux": "yarn run build && electron-builder build -c ./electron-builder.config.json --linux",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
     "@capacitor-community/electron": "^4.1.0",
+    "chokidar": "~3.5.2",
     "electron-is-dev": "~2.0.0",
     "electron-serve": "~1.1.0",
-    "npm-check-updates": "^12.5.2"
+    "electron-unhandled": "~3.0.2",
+    "electron-updater": "~4.3.9",
+    "electron-window-state": "~5.0.3"
   },
   "devDependencies": {
-    "electron": "~17.1.2",
-    "electron-builder": "~22.14.13",
-    "typescript": "~4.6.2"
+    "electron": "^14.0.0",
+    "electron-builder": "~22.11.7",
+    "electron-rebuild": "^3.2.3",
+    "typescript": "~4.3.5"
   },
   "keywords": [
     "capacitor",
     "electron"
-  ],
-  "author": "",
-  "license": "MIT",
-  "build": {
-    "appId": "app.ionic-app.ionic-app",
-    "productName": "Ionic App",
-    "asar": false,
-    "files": [
-      "app/**",
-      "assets/**",
-      "build/**",
-      "plugins/**",
-      "capacitor.config.json"
-    ],
-    "mac": {
-      "category": "public.app-category.developer-tools",
-      "target": "dmg",
-      "icon": "assets/icon.png"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
-    },
-    "protocols": {
-      "name": "ionic-app-protocol",
-      "schemes": [
-        "ionic-app"
-      ]
-    }
-  }
+  ]
 }
